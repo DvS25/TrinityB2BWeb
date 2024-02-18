@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Site Map";
+}<div class="row">
+    <div class="product_title">
+        <div class="col-md-12">
+            <h3>Site Map</h3>
+            <ul class="breadcrumb product_page head beforloginbread">
+                <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+                <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                <li><a href="javascript:void(0)"></a>Site Map</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12 indexsitemap" style="margin-top: 50px;">
+        <p><a href="@Url.Action("Index","Login")">Home</a></p>
+        <p><a href="@Url.Action("Aboutus","Login")">About Us</a></p>
+        <p><a href="@Url.Action("Company","Login")">Company</a></p>
+        <p><a href="@Url.Action("FactoryOutlet","Login")">Factory Outlet</a></p>
+        <p><a href="@Url.Action("DowloadApp","Login")">Download App</a></p>
+        <p><a href="@Url.Action("Contactus","Login")">Contact Us</a></p>
+        <p><a href="@Url.Action("PrivacyPolicy","Login")">Privacy Policy</a></p>
+        <p><a href="@Url.Action("TermsCondition","Login")">Terms & Conditions</a></p>
+        <p><a href="@Url.Action("Login","Login")">Login/SignUp</a></p>
+    </div>
+</div>

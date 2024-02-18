@@ -1,0 +1,294 @@
+﻿<div class="product_title pt1">
+    <h3 id="mydetailname"><span id="backmydetails" class="cursorcss"><img src="~/Content/image/leftbackarrow.png" class="backbuttom" /></span>My Details</h3>
+    <ul class="breadcrumb product_page hidden-xs hidden-sm">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("MyProfile","Profile")">My Profile</a></li>
+        <li><a href="javascript:void(0)">My Details</a></li>
+    </ul>
+</div>
+@if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+{
+    <input type="hidden" id="hiddenloginid" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERID" />
+    <input type="hidden" id="hiddenusertype" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE" />
+    <input type="hidden" id="hiddenuserpassword" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.PASSWORD" />
+    <input type="hidden" id="hiddenuseremail" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.EMAIL" />
+    <input type="hidden" id="hiddenusername" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERNAME" />
+}
+<div class="col-sm-12 wall" style="display:none" id="partydetaildiv">
+    <div class="maindetaildiv maindetaildiv1">
+        <form id="frmpartyDetails" class="row form-horizontal">
+            <div class="row">
+                <h4> Company Details</h4>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 m-b-7">
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">Party Code</label>
+                        <div class="col-sm-8">
+                            <label class="control-label" id="txtpartycode">11 Ab</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">Company Name<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtCompanyName" class="form-control required" name="Companyname" type="text" placeholder="Company Name" tabindex="1" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">Person Name<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtPersonname" class="form-control required" name="PersonName" type="text" placeholder="Person Name" tabindex="2" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">User Name<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input class="form-control required" type="text" name="username" id="text_username" placeholder="Username" autocomplete="nope" tabindex="3" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">User Password<span style="color:red"> *</span></label>
+                        <div class="col-sm-8 ph">
+                            <div class="input-group">
+                                <input class="form-control required" type="password" name="userpassword" id="text_Userpassword" placeholder="User Password" autocomplete="new-password" tabindex="4" />
+                                <div class="input-group-addon">
+                                    <span id="showpartypassword" class="cursorcss"><i class="fa fa-eye"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 m-b-7">
+                    @*<div class="row form-group">
+                        <label class="col-sm-4 control-label">Acc. Active Till Date</label>
+                        <div class="col-sm-8">
+                            <label class="control-label" id="Activetilldate"></label>
+                        </div>
+                    </div>*@
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">GST No</label>
+                        <div class="col-sm-8">
+                            <input id="txtgstno" type="text" name="gstno" placeholder="XXXXXXXXXXXXXXX" pattern="\d{2}\w{5}\d{4}\w\d\w\d" class="masked form-control" data-charset="XX_____XXXX_P_P" tabindex="5" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">PAN No</label>
+                        <div class="col-sm-8">
+                            <input id="txtpanno" type="text" name="panno" placeholder="XXXXXXXXXX" pattern="\w{5}\d{4}\w" class="masked form-control" data-charset="_____XXXX_" tabindex="6" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">Diamond Color</label>
+                        <div class="col-sm-8" id="binddiamondcolor">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">Diamond Purity</label>
+                        <div class="col-sm-8" id="binddiamondpurity">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Design Concept</label>
+                        <div class="col-sm-8">
+                            <input name="PartyConceptOf" id="txtPartyConceptOf" class="form-control" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>Contact Details</h4>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">Email Id<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtemailid" class="form-control required" name="EmailId" type="text" placeholder="Email Id" tabindex="9" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">Contact No<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtcontactno" class="form-control mobilevalidation required" name="Contactno" type="number" placeholder="Contact No" tabindex="10" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">Mobile No</label>
+                        <div class="col-sm-8">
+                            <input id="txtmobileno" class="form-control mobilevalidation" name="MobileNo" type="number" placeholder="Mobile no" tabindex="11" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">Address</label>
+                        <div class="col-sm-8">
+                            <textarea rows="3" class="form-control" id="textaddress" name="address" placeholder="Address" tabindex="12"></textarea>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 m-b-7">
+                    <div class="row form-group">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label">Country<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <select id="txtcontryname" name="contry" onchange="Changecountry()" style="width: 100%;height: 3.5rem!important;" class="form-control required" tabindex="13" disabled></select>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="statediv" style="display:none">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">State<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <select id="txtstatename" name="state" onchange="ChangeState()" style="width: 100%;height: 3.5rem!important;" class="form-control required" tabindex="14"></select>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="citydiv" style="display:none">
+                        <label class="col-lg-4 col-md-4 col-sm-3 control-label ">City<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <select id="txtcityname" name="cityvalue" onchange="ChangeCity()" style="width: 100%;" class="form-control txtcityvalue" tabindex="15"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-7">
+                    <div class="row form-group">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-lg-offset-2 col-md-offset-2 col-sm-offset-3" style="padding-right:3px;">
+                            <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btnsavendnext">Submit</button>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="padding-left:3px;">
+                            <button type="button" class="btn btn-primary  btn-md btn-block waves-effect text-center m-b-20 cacelfromsubmit btncanclepartysales">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </form>
+    </div>
+</div>
+<div class="col-sm-12" style="display:none" id="salesdetaildiv">
+    <div class="maindetaildiv">
+        <form id="frmsalesDetails" class="row form-horizontal">
+            <div class="row">
+                <h4>Company Details</h4>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row form-group">
+                        <label class="col-sm-4 form-control-label">Employee Name<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtEmployeename" class="form-control required" name="EmployeeName" type="text" placeholder="Person Name" tabindex="2" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 form-control-label">User Name<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input class="form-control required" type="text" name="salesusername" id="text_salesusername" placeholder="Username" tabindex="3" autocomplete="nope" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 form-control-label">User Password<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input class="form-control required" type="password" name="salesuserpassword" id="text_salesUserpassword" placeholder="User Password" autocomplete="new-password" tabindex="4" />
+                                <div class="input-group-addon">
+                                    <span id="showslaespassword" class="cursorcss"><i class="fa fa-eye"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label">Assign User Group</label>
+                        <div class="col-sm-8">
+                            <label class="control-label" id="txtassignusergrp"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label">Diamond Color</label>
+                        <div class="col-sm-8" id="salesbinddiamondcolor">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Diamond Purity</label>
+                        <div class="col-sm-8" id="salesbinddiamondpurity">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Design Concept</label>
+                        <div class="col-sm-8">
+                            <select name="SalesConceptOf" id="ddlSalesConceptOf" multiple="multiple" style="width:100%;"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>Contact Details</h4>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Gender</label>
+                        <div class="category_limit col-sm-8" id="salesgender">
+                            <label class="con" style="width:auto;margin:3px;float:left;">
+                                <span>Male</span>
+                                <input type="radio" checked="checked" name="genderradio" value="Male">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="con" style="width:auto;margin:3px;float:left;">
+                                <span>Female &nbsp;&nbsp;&nbsp;</span>
+                                <input type="radio" name="genderradio" value="Female" id="Female">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Email Id<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtsalesemailid" class="form-control required" name="salesEmailId" type="text" placeholder="Email Id" tabindex="9" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Mobile No1<span style="color:red"> *</span></label>
+                        <div class="col-sm-8">
+                            <input id="txtsalesmobileno1" class="form-control mobilevalidation required" name="salesmobile1" type="number" placeholder="Contact No" tabindex="10" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label ">Mobile N2</label>
+                        <div class="col-sm-8">
+                            <input id="txtsalesmobileno2" class="form-control mobilevalidation" name="salesmobile2" type="number" placeholder="Mobile no" tabindex="11" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-3">
+                            <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btnsalessavendnext">Submit</button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px;padding-right:0px">
+                            <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20 cacelfromsubmit btncanclepartysales">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="reloginModal" role="dialog" data-backdrop="static" style="z-index:9999;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#fff;">
+                <button type="button" class="close" data-dismiss="modal" id="closemodalbtn">&times;</button>
+                <h4 class="modal-title">Place Order</h4>
+            </div>
+            <div class="modal-body">
+                <form id="partyform">
+                    <div class="row form-group">
+                        <p>Your details are saved successfully you need to ReLogin</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-9 col-xs-4">
+                            <button type="button" class="btn btn-primary btn-block btn-sm waves-effect text-center dltbackground" id="btnlogoutinchangedata">Ok</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

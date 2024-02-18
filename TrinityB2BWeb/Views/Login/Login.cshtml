@@ -1,0 +1,256 @@
+﻿@model TrinityB2BWeb.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+}
+<div class="contact-bg">
+<div class="container ">
+<div class="row" id="signupform" style="display:none;margin-top:20px">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-0  mob-nopad">
+            <div class="wall2 mob-mt20">
+                <h2 style="text-align:center">Sign Up</h2>
+                <form id="formsignup">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad">
+                            <label class="control-label col-63" for="input-email">Company Name<span class="addstar"> *</span></label>
+                            <input type="text" name="companyname" value="" placeholder="Company Name" id="txt_companyname" class="form-control required" />
+                        </div>
+                        <div class="col-sm-6 mob-nopad mob-tm6">
+                            <label class="control-label col-63" for="input-password">Email Id<span class="addstar"> *</span></label>
+                            <input type="email" name="emailid" value="" placeholder="Email Id" id="txt_email" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad">
+                            <label class="control-label col-63" for="input-password">Contact Person Name<span class="addstar"> *</span></label>
+                            <input type="text" name="contactperson" value="" placeholder="Contact Person Name" id="txt_contactperson" class="form-control required" />
+                        </div>
+                        <div class="col-sm-6 mob-nopad mob-tm6">
+                            <label class="control-label col-63" for="input-password">Contact No<span class="addstar"> *</span></label>
+                            <input type="text" name="contactno" value="" placeholder="Contact No" id="txt_contactno" class="form-control required" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad">
+                            <label class="control-label col-63" for="input-email">User Name<span class="addstar"> *</span></label>
+                            <input type="text" name="username" value="" placeholder="User Name" id="txt_username" class="form-control required" />
+                        </div>
+                        <div class="col-sm-3 mob-nopad mob-tm6">
+                            <label class="control-label col-63" for="dropdowncity">Country<span class="addstar"> *</span></label>
+                            <select id="dropdowncountry" name="countrydrop" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad">
+                            <label class="control-label col-63" for="input-password">Password<span class="addstar"> *</span></label>
+                            <input type="password" name="password" value="" placeholder="Password" id="txt_password" class="form-control required" minlength=8 />
+                        </div>
+                        <div class="col-sm-3 mob-nopad mob-tm6" id="dropstatediv">
+                            <label class="control-label col-63" for="dropdowncity">State<span class="addstar"> *</span></label>
+                            <select id="dropdownstate" name="statedrop" class="form-control required"></select>
+                        </div>
+                        <div class="col-sm-3 mob-nopad mob-tm6" id="dropcitydiv">
+                            <label class="control-label col-63" for="dropdowncity">City<span class="addstar"> *</span></label>
+                            <select id="dropdowncity" name="citydrop" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad">
+                            <label class="control-label col-63" for="input-password">Confirm Password<span class="addstar"> *</span></label>
+                            <input type="password" name="confirmpassword" value="" data-rule-equalTo="#txt_password" placeholder="Confirm Password" id="txt_confrompassword" class="form-control required" />
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mob-nopad checkboxdata checkbox-primary checkbox-inline">
+                            <input type="checkbox" value="" name="conditions" id="temscheckbox"/>
+                            <label class="col-63" for="temscheckbox">I agree to the Terms & Conditions...</label>
+                            <p class="error" id="errorchecktems" style="display:none">Please select Terms & Conditions</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 col-sm-offset-3 mob-nopad">
+                            <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btnsignup">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  
+    <div class="row" id="loginform" style="margin-top:60px">
+        <input type="hidden" id="hidenmobilenootp" />
+        <input type="hidden" id="hidepartyid" />
+        <div class="row" id="logindivform">
+            <div id="content" class="col-sm-12 mob-nopad">
+                <div class="row">
+                    <div class="col-sm-6 mob-nopad animation-element slide-left">
+                        <div class="wall2">
+                            <h2>New Customer</h2>
+                            <p><strong>Register</strong></p>
+                            <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+                            <a href="#0" class="btn btn-primary" id="lableregister">Continue</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mob-nopad animation-element slide-right">
+                        <div class="wall2 ">
+                            <h2 style="text-align:center">Existing Customer</h2>
+                            @using (Html.BeginForm("DoLogin", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="col-sm-12 login-msg" style="text-align:center">
+                                    <span style="color:red;word-wrap: break-word">@ViewBag.Message</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="user-name">User Name<span class="addstar"> *</span></label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter User Name", @required = "", @id = "user-name" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-password">Password<span style="color:red;"> *</span></label>
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control login-Paaword", @required = "", @placeholder = "Enter Password", @id = "user-password" })
+                                </div>
+                                <div class="form-group row">
+                                    <div class="text-sm-left">
+                                        <fieldset>
+                                            @Html.CheckBoxFor(m => m.RememberMe, new { @id = "remember-me", @class = "chk-remember" })
+                                            <label for="remember-me"> Remember Me</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">LOGIN</button>
+                                <div class="form-group">
+                                    <label class="control-label loginlable" id="lableforgot">Forgot Password?</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<aside id="column-right" class="col-sm-3 hidden-xs">
+                    <div class="list-group">
+                        <a href="@Url.Action("Aboutus","Login")" class="list-group-item">About us</a>
+                        <a href="@Url.Action("Company","Login")" class="list-group-item">Company</a>
+                        <a href="@Url.Action("Contactus","Login")" class="list-group-item">Contact us</a>
+                    </div>
+                </aside>*@
+        </div>
+        <div class="row" id="forgotdivform" style="display:none">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="well">
+                    <h2 style="text-align:center">Forgot Password?</h2>
+                    <form id="fromforgot">
+                        <div class="col-sm-12 login-msg" style="text-align:center">
+                            <span style="color:red;word-wrap: break-word;display:none;" id="errorforgot"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txt_forgotuser">User Name<span class="addstar"> *</span></label>
+                            <input type="text" name="forgotUserName" value="" placeholder="User Name" id="txt_forgotuser" class="form-control required" />
+                        </div>
+                        <button type="button" id="forgot_send" class="btn btn-primary btn-md btn-block waves-effect text-center">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="varifcationdiv" style="display:none">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="well">
+                    <h2 style="text-align:center">Verification?</h2>
+                    <p></p>
+                    <div class="col-sm-12" style="text-align:center">
+                        <span style="color:red;word-wrap: break-word;display:none" id="errorotpnotmatch">Please Enter Valid OTP.</span>
+                    </div>
+                    <form>
+                        <p class="verifytxt">Enter the verification code we just sent you on your mobile no.</p>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3">
+                                <div id="divOuter">
+                                    <div id="divInner">
+                                        <input id="partitioned" type="text" maxlength="4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="verifytxt" id="expitytime">OTP Expiry Time : <span style="color:black" id="timer"></span></p>
+                        <p class="verifytxt">if you don't receive a code!<span style="color:black;cursor: pointer;" id="resendotp"> Resend</span></p>
+                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center" id="btnverifyotp">Verify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="addnewpassword" style="display:none">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="well">
+                    <h2 style="text-align:center">Conform Your Password</h2>
+                    <form id="formchangepassword">
+                        <div class="form-group row">
+                            <label class="control-label" for="txt_veifypassword">Password<span class="addstar"> *</span></label>
+                            <input type="password" name="verifypassword" value="" placeholder="Password" id="txt_veifypassword" class="form-control required" minlength=8 />
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label" for="input-password">Confirm Password<span class="addstar"> *</span></label>
+                            <input type="password" name="confirmverifypassword" value="" data-rule-equalTo="#txt_veifypassword" placeholder="Confirm Password" id="txt_veifyconformpassword" class="form-control required" />
+                        </div>
+                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center" id="btnclicktologin">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/Login/Login.js"></script>
+    <script id="DDLCountryList" type="text/x-jsrender">
+        <option value="{{>countryid}}">{{>countryname}}</option>
+    </script>
+    <script id="DDLStateList" type="text/x-jsrender">
+        <option value="{{>stateid}}">{{>statename}}</option>
+    </script>
+    <script id="DDLCityList" type="text/x-jsrender">
+        <option value="{{>cityid}}">{{>cityname}}</option>
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            //window and animation items
+            var animation_elements = $.find('.animation-element');
+            var web_window = $(window);
+
+            //check to see if any animation containers are currently in view
+            function check_if_in_view() {
+                //get current window information
+                var window_height = web_window.height();
+                var window_top_position = web_window.scrollTop();
+                var window_bottom_position = (window_top_position + window_height);
+
+                //iterate through elements to see if its in view
+                $.each(animation_elements, function () {
+
+                    //get the element sinformation
+                    var element = $(this);
+                    var element_height = $(element).outerHeight();
+                    var element_top_position = $(element).offset().top;
+                    var element_bottom_position = (element_top_position + element_height);
+
+                    //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
+                    if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+                        element.addClass('in-view');
+                    } else {
+                        element.removeClass('in-view');
+                    }
+                });
+
+            }
+
+            //on or scroll, detect elements in view
+            $(window).on('scroll resize', function () {
+                check_if_in_view()
+            })
+            //trigger our scroll event on initial load
+            $(window).trigger('scroll');
+
+        });
+    </script>
+
+}

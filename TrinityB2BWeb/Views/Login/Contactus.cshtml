@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact Us";
+}
+<div class="container-fluid">
+    <div class="row">
+        @*<div class="row">
+                <ul class="breadcrumb">
+                    <li><a href="#0"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#0">Home</a></li>
+                    <li><a href="#0">Contact Us</a></li>
+                </ul>
+            </div>*@
+        <div class="product_title contactuss">
+            <div class="col-sm-12 mob-nopad">
+                <h3>Contact Us</h3>
+                <ul class="breadcrumb product_page head beforloginbread contactlogin hidden-sm hidden-xs">
+                    <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="javascript:void(0)">Contact Us</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mob-nopad">
+                <div class="wall">
+                    <h2>Send Message For Any Query</h2>
+                    <form id="formcontactus">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_name">Full Name<span class="addstar"> *</span></label>
+                            <input type="text" name="fullname" value="" placeholder="Enter Full Name" id="txt_name" class="form-control required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txt_email">Email Id<span class="addstar"> *</span></label>
+                            <input type="email" name="emailid" value="" placeholder="Enter Email Id" id="txt_email" class="form-control required" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txt_mobile">Mobile No<span class="addstar"> *</span></label>
+                            <input type="text" name="mobileno" value="" placeholder="Enter Mobile No" id="txt_mobile" class="form-control required" maxlength="10" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txt_message">Message<span class="addstar"> *</span></label>
+                            <textarea type="text" rows="4" name="message" value="" placeholder="Message here..." id="txt_message" class="form-control required"></textarea>
+                        </div>
+                        <input type="button" value="Send Message" id="btnsendmail" class="btn btn-primary" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 mob-nopad">
+                <div class="wall">
+                    <h2>Corporate Office</h2>
+                    <p>@*<i class="fa fa-map-marker add-i"></i>*@<strong>Address</strong></p>
+                    <p>405, Trinity Jewells, Princess Plaza, Sardar Chowk Mini Bazar, Varacha Road, 395006, Gujarat, India</p>
+                    <p> @*<i class="fa fa-envelope add-i"></i>*@ <strong>Email Id</strong></p>
+                    <p>info@trinityjewells.com</p>
+                    <p> @*<i class="fa fa-mobile add-i"></i>*@ <strong>Contact No</strong></p>
+                    <p>0261-4000-800</p>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mob-nopad"></div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/Login/Contactus.js"></script>
+}

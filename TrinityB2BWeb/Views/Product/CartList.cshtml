@@ -1,0 +1,278 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Cart List";
+}
+<div class="container-fluid">
+    <div class="addscaleclass">
+        <div class="product_title row pro-title pr1" style="border-bottom: 1px solid #d6d6d6;">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <h3 id="subcategoryname">Cartlist</h3>
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-12" style="float:right;">
+                <ul class="breadcrumb product_page head1 hidden-sm hidden-xs">
+                    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("CartList","Product")">Cartlist</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+            {
+                <input value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE" type="hidden" id="hiddenusertype" />
+                <input value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTPERSONNAME" type="hidden" id="hiddencontactpersonname" />
+            }
+            <div class="row cart-head" style="margin-top: 3% !important;">
+                <div class="col-sm-6 col-xs-12 mainstockdiv">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="virtualdiv">
+                        <div class="html ">
+                            <h4 class="ftitle cartborderback" id="cartvirtualstock" style="cursor: pointer;">Virtual Stock<span id="virtualcount"></span></h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="physicaldiv">
+                        <div class="html ">
+                            <h4 class="ftitle" id="cartphysicalstock" style="cursor: pointer;">Physical Stock<span id="physicalcount"></span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 maintotaldiv mob-pb10" id="alltotaldetails" style="display:none">
+                    <div class="col-sm-4 col-xs-4 text-right mob-nopad">
+                        <span><b>Diamond Weight :</b></span>
+                        <span id="totaldiamondweight"></span>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 text-right">
+                        <span><b>Gold Weight :</b></span>
+                        <span id="totalgoldweight"></span>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 text-right">
+                        <span><b>Amount : </b></span>
+                        <span id="totalprice"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div id="cartdetails" style="display:none">
+                <div class="pdborder">
+                    <div class="row pdtitle hidden-xs">
+                        <div class="col-sm-2">Product</div>
+                        <div class="col-sm-5">Description</div>
+                        <div class="col-sm-2 text-center">Qty</div>
+                        <div class="col-sm-1 text-center">Price</div>
+                        <div class="col-sm-1 text-center">Add wishlist</div>
+                        <div class="col-sm-1 text-center">Remove</div>
+                    </div>
+                    <div class="row pddesc" id="cartlistdata">
+
+                    </div>
+                </div>
+                <div class="row btngenerate">
+                    <div class="col-sm-4 col-sm-offset-4 col-xs-12 mob-nopad text-center">
+                        <button type="button" class="btn btn-primary btn-block btn-md waves-effect text-center" id="btngeneratequotation">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row emptycart" id="emptycartlist" style="display:none">
+                <div class="row">
+                    <div class="text-center">
+                        <img src="~/Content/image/shoppingcart/emptycart.png" id="emptycartimg" />
+                    </div>
+                </div>
+                <h3 class="text-center ">Your Cart Is Currently Empty!</h3>
+                <div class="col-sm-4 col-sm-offset-4 text-center">
+                    <button type="button" class="btn btn-primary btn-md waves-effect text-center" id="btnclicktoshopping">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="quotationModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="closemodalbtn">&times;</button>
+                        <h4 class="modal-title">Place Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="partyform">
+                            <div id="Quotationdiv" style="display:none;">
+                                <div class="row form-group">
+                                    <label class="col-sm-3 col-xs-12" for="stocktype">Order Type :</label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <div class="category_limit" id="stocktype">
+                                            <label class="con stockfont" style="width:auto;margin:3px;float:left;">
+                                                <span>JOB WORK</span>
+                                                <input type="radio" checked="checked" name="jobworkradio" value="JOBWORK" id="radiojobwork">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="con stockfont" style="width:auto;margin:3px;float:left;">
+                                                <span>STOCK &nbsp;&nbsp;&nbsp;</span>
+                                                <input type="radio" name="jobworkradio" value="STOCK" id="radiostock">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <lable class="col-sm-3 col-xs-12">Order Notes :</lable>
+                                    <div class="col-sm-9 col-xs-12 mob-mt8">
+                                        <textarea rows="4" class="form-control" id="remarkarea" placeholder="Write special notes here.."></textarea>
+                                    </div>
+                                </div>
+                                <small style="color: red;font-style: italic;">
+                                    Note : This is estimated order only. Price can be slightly differ as per Metal & Diamond used at the time of manufacturing.
+                                </small>
+                                <div class="row">
+                                    <div class="col-sm-4 col-sm-offset-3 col-xs-7" style="padding-right:0px;">
+                                        <button type="button" class="btn btn-primary btn-block btn-sm waves-effect text-center backcartcolor" onclick="Generatequotation()">Submit Order</button>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-5">
+                                        <button type="button" class="btn btn-primary btn-block btn-sm waves-effect text-center dltbackground" onclick="Canclequotation()">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Selectpartydiv" style="display:none">
+                                <div class="row form-group">
+                                    <button type="button" class="btn btn-sm" id="btnaddnewparty">Add New Party</button>
+                                </div>
+                                <div class="row form-group ui-widget">
+                                    <label class="col-sm-3 control-label text-right" for="partyinput">Select Party<span class="addstar"> *</span> </label>
+                                    <div class="col-sm-8" id="textselectparty">
+                                        <input id="partyinput" class="form-control partyinput required fontcolor" name="existingparty" value="" style="padding-top:0px!important;padding-bottom: 0px!important;" />
+                                        <input type="hidden" id="hdnpartycode" value="" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-2 col-sm-offset-9">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block waves-effect text-center m-b-20" id="btnsubmitexistparty">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Partydetailform" style="display:none">
+                                <div class="row form-group">
+                                    <label class="col-sm-3 control-label text-right" for="txtpartyname">Party Name<span class="addstar"> *</span> </label>
+                                    <div class="col-sm-8">
+                                        <input id="txtpartyname" name="partyname" class="form-control required fontcolor" value="" placeholder="Party Name" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 control-label text-right" for="txtmobilename">Mobile No<span class="addstar"> *</span></label>
+                                    <div class="col-sm-8">
+                                        <input id="txtmobilename" name="mobileno" type="number" class="form-control required fontcolor" value="" placeholder="Mobile No" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 control-label text-right" for="txtemailid">Email Id<span class="addstar"> *</span></label>
+                                    <div class="col-sm-8">
+                                        <input id="txtemailid" name="emailid" type="email" class="form-control required fontcolor" value="" placeholder="Email id" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 control-label text-right">Address<span class="addstar"> *</span></label>
+                                    <div class="col-sm-8">
+                                        <textarea rows="4" name="address" id="txtaddress" class="form-control required fontcolor" value="" placeholder="Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-2 col-sm-offset-7 submitparty">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block waves-effect text-center m-b-20" id="btnsubmitnewparty">Submit</button>
+                                    </div>
+                                    <div class="col-sm-2 cancleparty">
+                                        <button type="button" class="btn btn-sm btn-block waves-effect text-center m-b-20" id="btncancleparty">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="CompletedQuotation" style="display:none">
+                                <div class="row form-group quothankful">
+                                    <h3>Thank You For Place Order...</h3>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 col-sm-offset-3 control-label text-right"><b>Order No :</b> </label>
+                                    <label class="col-sm-3 control-label" id="thankquotno"></label>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 col-sm-offset-3 control-label text-right"><b>Process Type : </b></label>
+                                    <label class="col-sm-3 control-label" id="thankprocesstype"></label>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-sm-3 col-sm-offset-3 control-label text-right"><b>Order Type : </b></label>
+                                    <label class="col-sm-3 control-label" id="thankquottype"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/Content/plugin/jquery-ui/jquery-ui.css" rel="stylesheet" />
+@section Scripts{
+
+    <script src="~/Content/plugin/jquery-ui/jquery-ui.js"></script>
+    <script id="Datacartlistbind" type="text/x-jsrender">
+        <div class="row cartlistborder" id="{{>cartid}}">
+            <div class="col-sm-2 col-xs-2">
+                <a class="thumbnail cartimg" id="" href="javascript:void(0)" onclick="showdetail('{{>cartid}}')">
+                    <img src="{{>imagepath}}" title="" alt="Trinity Image" />
+                </a>
+            </div>
+            <div class="col-sm-5 col-xs-7 detailcart">
+                <input type="hidden" id="cart_id{{>cartid}}" value="{{>cartid}}" />
+                <input type="hidden" id="design_number{{>cartid}}" value="{{>designcode}}" />
+                <div class="row">
+                    <a class="cartdesigncode desinghover" href="javascript:void(0)" onclick="showdetail('{{>cartid}}')"><h3 style="width:auto" id="">{{>designcode}}</h3></a>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Size : </b></span>
+                    <span id="designsize{{>cartid}}">{{if size != '[object Object]'}}{{>size}}{{else}}0{{/if}}</span>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Metal : </b></span>
+                    <span id="gpurity{{>cartid}}">{{>metalquality}}</span>
+                    <span id="gcolor{{>cartid}}">{{>gcolor}}</span>
+                    <span>{{>metaltype}}</span>
+                    <span>{{>goldweight}}&nbsp;&nbsp;gm</span>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Diamond : </b></span>
+                    <span id="dcolor{{>cartid}}">{{>cdiamondpurity}}/{{>cdiamondcolor}}</span>
+                    <span>{{>diamondpices}}&nbsp;&nbsp;pcs/</span>
+                    <span>{{>diamondweight}}&nbsp;cts</span>
+                </div>
+                {{if stoneweight > 0}}
+                <div class="row wishlist-pr">
+                    <span><b>CStone : </b></span>
+                    <span>{{>stonecode}}&nbsp;&nbsp;/</span>
+                    <span>{{if stonecolor != '[object Object]'}}{{>stonecolor}}{{else}}0{{/if}}</span>
+                    <span>{{>stonepcs}}&nbsp;&nbsp;pcs</span>
+                    <span>{{>stoneweight}}&nbsp;&nbsp;cts</span>
+                </div>
+                {{/if}}
+                {{if remark != '[object Object]'}}
+                <div class="row wishlist-pr">
+                    <span><b>Remark : </b></span>
+                    <span id="Customizenotes{{>cartid}}">{{>remark}}</span>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-sm-2 col-xs-3 detailcart text-center">
+                <div class="qtydesign">
+                    <a class="cursorcss" onclick="Decreasequantity('{{>cartid}}')" href="javascript:void(0)"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                    <span id="quantitytotal{{>cartid}}">{{>quantity}}</span>
+                    <a class="cursorcss" onclick="Increasequantity('{{>cartid}}')" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-1 col-sm-1 col-xs-8 col-xs-offset-2 col-sm-offset-0 text-center indianprice pricetech" id="indianprice{{>cartid}}"></div>
+            <input id="ipr{{>cartid}}" type="hidden" value="{{>price}}" />
+            <input type="hidden" value="{{>iscustomize}}" id="iscutomize{{>cartid}}" />
+            <div class="col-sm-1 col-xs-1 col-xs-offset-9 col-sm-offset-0 text-center">
+                <a onclick="Castlistview.Deletecartaddwishlist('{{>cartid}}')" title="Add to wishlist" class="btnheartcss cursorcss"><i class="fa fa-heart" style="color: #5f5454!important"></i></a>
+            </div>
+            <div class="col-sm-1 col-xs-1 text-center">
+                <a onclick="Castlistview.Deletecartlist('{{>cartid}}')" title="Delete" class="trashcss cursorcss"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
+
+    </script>
+    <script src="~/Scripts/Product/CartList.js"></script>
+}

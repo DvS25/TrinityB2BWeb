@@ -1,0 +1,156 @@
+﻿<div class="product_title pt"style="position:fixed; width:100%; z-index:1; background-color:#fff;">
+    <h3 id="mydetailname"><span id="backmypolicy" class="cursorcss"><img src="~/Content/image/leftbackarrow.png" class="backbuttom" /></span>My Policy</h3>
+    <ul class="breadcrumb product_page hidden-sm hidden-xs">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("MyProfile","Profile")">My Profile</a></li>
+        <li><a href="javascript:void(0)">My Policy</a></li>
+    </ul>
+</div>
+@if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+{
+    <input type="hidden" id="hiddenpartycode" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.PARTYCODE" />
+}
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 text-center"style="z-index:0; background-color:#fff;margin-top:70px;">
+            <span id="policydate"></span>
+    </div>
+    <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-2 text-center"style="z-index:0; background-color:#fff;">
+        <div class="btn-group" style="margin: 9px 0 5px;">
+            <button type="button" class="btn btn-policy round-left maintabbtn" id="tabrawmaterial">Raw Material</button>
+            <button type="button" class="btn btn-policy maintabbtn" id="tablabour">Labour</button>
+            <button type="button" class="btn btn-policy round-right maintabbtn" id="tabother">Other</button>
+        </div>
+    </div>
+        @*<div role="tabpanel" class="row">
+                <div class="col-sm-10 mainpolicyhead">
+                    <ul class="nav nav-tabs policytab" role="tablist">
+                        <li class="nav-item active" role="presentation"><a class="nav-link" id="tabrawmaterial" data-toggle="tab" href="#tab-1">Raw Material</a></li>
+                        <li class="nav-item" role="presentation" id="tablabour"><a class="nav-link" data-toggle="tab" role="tab" aria-expanded="true" href="#tab-2">Labour</a></li>
+                        <li class="nav-item" role="presentation" id="tabother"><a class="nav-link" id="tabother" data-toggle="tab" role="tab" aria-expanded="true" href="#tab-3">Other</a></li>
+                    </ul>
+                </div>
+               <div class="col-sm-2 policydatediv">
+                   <span id="policydate"></span>
+               </div>
+
+            </div>*@
+
+        <div class="col-sm-12 tab-content panel-top65 mob-nopad" style="z-index:0;">
+            <div id="tab-1" class="tab-pane active" role="tabpanel" style="margin-top:10px">
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs navborder" role="tablist">
+                        <li class="rowtab nav-item active" role="presentation" id="rowgoldtab">
+                            <a class="nav-link" data-toggle="tab" href="#tab-4">Gold</a>
+                        </li>
+                        <li class="rowtab nav-item" role="presentation" id="rowdiamondtab">
+                            <a class="nav-link" data-toggle="tab" href="#tab-5">Diamond</a>
+                        </li>
+                        <li class="rowtab nav-item" role="presentation" id="rowcolorstone">
+                            <a class="nav-link" data-toggle="tab" href="#tab-6">Color Stone</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+
+                    <div id="tab-4" class="tab-pane active" role="tabpanel">
+                        <div class="datacontent" style="box-shadow:none!important">
+                            <div class="row" style="padding-top: 13px; border:1px solid #eee;">
+                                <label class="col-lg-1 col-md-1 col-sm-3 col-xs-4"><b>Gold Rate :</b></label>
+                                <p class="col-md-5 col-sm-5 col-xs-8" style="font-size:15px" id="textgoldrate"></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="tab-5" class="tab-pane" role="tabpanel">
+                        <div class="datacontent">
+                            <div class="col-sm-12" style="overflow-x: auto; overflow-y: hidden;">
+                                <table class="table table-bordered table-hover myprofile-width">
+                                    <thead class="tbl-head-color">
+                                        <tr>
+                                            <th class="text-center" scope="col">Index</th>
+                                            <th scope="col">Shape</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col">Color</th>
+                                            <th scope="col">VVS (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                            <th scope="col">VS (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                            <th scope="col">SI (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="diamondtablist"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-6" class="tab-pane" role="tabpanel">
+                        <div class="datacontent">
+                            <div class="col-sm-12" style="overflow-x: auto; overflow-y: hidden;">
+                                <table class="table table-bordered table-hover myprofile-width">
+                                    <thead class="tbl-head-color">
+                                        <tr>
+                                            <th class="text-center" scope="col">Index</th>
+                                            <th scope="col">Shape</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col">Color</th>
+                                            <th scope="col">Sygnety (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                            <th scope="col">Synthetic (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="colordtablist"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="tab-pane" role="tabpanel">
+                <div class="panel">
+                    <div class="datacontent">
+                        <div class="col-sm-12 m-t-10" style="overflow-x: auto; overflow-y: hidden;">
+                            <table class="table table-bordered table-hover myprofile-width">
+                                <thead class="tbl-head-color">
+                                    <tr>
+                                        <th class="text-center" scope="col">Index</th>
+                                        <th scope="col">GoldWeight</th>
+                                        <th scope="col">Regular (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                        <th scope="col">Micropave (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                        <th scope="col">Italian (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="labourtablist"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="tab-3" class="tab-pane" role="tabpanel" style="margin-top:10px">
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs navborder" role="tablist">
+                        <li class="rowtab nav-item active" role="presentation" id="jobpolicyli">
+                            <a class="nav-link" data-toggle="tab" href="#tabjobwork">Job Work Policy</a>
+                        </li>
+                        <li class="rowtab nav-item" role="presentation" id="businesspolicyli">
+                            <a class="nav-link" data-toggle="tab" href="#tabbusinesspolicy">Business Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div id="tabjobwork" class="tab-pane active" role="tabpanel">
+                        <div class="row panel">
+                            <div class="datacontent">
+                                <div class="col-sm-12 mob-nopad" id="text_bindjobwork"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabbusinesspolicy" class="tab-pane" role="tabpanel">
+                        <div class="row panel">
+                            <div class="datacontent">
+                                <div class="col-sm-12 mob-nopad" id="text_bindbusinessdetails"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

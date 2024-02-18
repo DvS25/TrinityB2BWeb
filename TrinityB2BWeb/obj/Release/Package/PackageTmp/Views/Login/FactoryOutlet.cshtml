@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Factory Outlet";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="product_title factoryoutletproduct">
+            <div class="col-md-12 mob-nopad">
+                <h3>Factory Outlet</h3>
+                <ul class="breadcrumb product_page head beforloginbread factoryoutletlogin hidden-sm hidden-xs">
+                    <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="javascript:void(0)"></a>Our Branches</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mob-nopad">
+            @*<div id="factorymap" style="height:470px;"></div>*@
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.0611353222384!2d72.89445411493595!3d21.22942418589004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fa0634079b5%3A0x53005f106a7cf96a!2sTrinity%20Factory%20Outlet!5e0!3m2!1sen!2sin!4v1577877629535!5m2!1sen!2sin" width="600" height="470" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <div class="col-md-6 mob-nopad" style="margin-top:15px; padding:0px;">
+            <div class="col-sm-6 col-md-12 col-lg-12 col-xs-12 borderadd1 wall mob-nopad">
+                <div>
+                    <p><b>Deepkamal Mall & Multiplex</b></p>
+                    <p>Ground Floor, Deepkamal Mall near Sarthana Jakatnaka, Varachha road, Surat-395006, Gujarat.</p>
+                    <p><i class="fa fa-phone"></i> 0261-4000-800</p>
+                    <p><i class="fa fa-envelope"></i> deepkamal@trinityjewells.in</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyBzAFS608AZWIdndq1Fe0pfStsoJH96rzo"></script>
+    <script src="~/Scripts/Login/FactoryOutlet.js"></script>
+}

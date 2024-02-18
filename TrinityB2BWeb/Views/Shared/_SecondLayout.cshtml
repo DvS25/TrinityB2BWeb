@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Jewelry Themes" />
+    <link rel="shortcut icon" type="image/png" href="~/Content/image/favicon.png" />
+    <link rel="alternate" media="print" href="www.actosoft.in">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Montserrat|Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="" rel="canonical" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167749305-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-167749305-2');
+    </script>
+
+    @Styles.Render("~/Content/css")
+    <style>
+        .fixfooter {
+            height: 50px;
+            width: 100%;
+        }
+
+        .footertext {
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        .footericon {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .footericonleft {
+            margin-right: 25px;
+        }
+    </style>
+</head>
+<body class="cr_default">
+    <div class="loadingtrinity" style="display:none">
+    </div>
+    <div class="header_outer">
+        <div class="header">
+            <div class="row">
+                <div class="container full-width">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-8 col-lg-offset-0 col-md-offset-0  col-sm-offset-0 col-xs-offset-2 at-text-center ipad_mtm15">
+                        <div id="logo">
+                            <a href="@Url.Action("Index","Home")">
+                                <img src="~/Content/image/catalog/Data/trinity logo.png" title="Trinity" alt="Trinity" class="img-responsive logo-img" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-2 col-xs-7">
+                        <div class="megamenu">
+                            <div class="responsive">
+
+                                <nav class="navbar-default">
+                                    <div class="container-megamenu horizontal ">
+                                        <div class="navbar-header">
+                                            <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
+                                        <div class="megamenu-wrapper">
+                                            <span id="remove-megamenu" class="fa-timesicon"><i class="fa fa-times" style="font-size: 25px; padding-right: 0;color: #c75534;"></i></span>
+                                            <div class="megamenu-pattern">
+                                                <div class="container">
+                                                    @MvcHtmlString.Create(TrinityB2BWeb.CommonClasses.SessionFacade.MenuListstr)
+
+                                                    <ul class="megamenu hidden-lg hidden-md hidden-sm" data-transition="slide" data-animationtime="500">
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href="@Url.Action("WishList","Product")" class="clearfix">
+                                                                <strong>
+                                                                    Wishlist
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href="@Url.Action("CartList","Product")" class="clearfix">
+                                                                <strong>
+                                                                    Cart
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href="@Url.Action("MyProfile","Profile")" class="clearfix">
+                                                                <strong>
+                                                                    MyProfile
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href="@Url.Action("FeedBack","home")" class="clearfix">
+                                                                <strong>
+                                                                    Feedback
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href="javascript:void(0);" class="clearfix">
+                                                                <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPathAdmin"]/UploadFiles/Country/@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.FLAGIMG" />
+                                                                <strong>
+                                                                    &nbsp; @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                        <li class="home">
+                                                            <p class='close-menu'></p>
+                                                            <a href=@Url.Action("LogOut","Login") class="clearfix">
+                                                                <strong>
+                                                                    Logout
+                                                                </strong>
+                                                                <b class='caret'></b>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*<div class="megamenu-wrapper">
+                                                <span id="remove-megamenu" class="fa fa-times"></span>
+                                                <div class="megamenu-pattern">
+                                                    <div class="container">
+                                                        <ul class="megamenu" data-transition="slide" data-animationtime="500">
+                                                            <li class="with-sub-menu hover">
+                                                                <p class='close-menu'></p>
+                                                                <a href="@Url.Action("Aboutus","Login")" class="clearfix">
+                                                                    <strong>
+                                                                        Widhlist
+                                                                    </strong>
+                                                                    <b class='caret'></b>
+                                                                </a>
+                                                            </li>
+                                                            <li class="with-sub-menu hover">
+                                                                <p class='close-menu'></p>
+                                                                <a href="@Url.Action("Company","Login")" class="clearfix">
+                                                                    <strong>
+                                                                        Cart
+                                                                    </strong>
+                                                                    <b class='caret'></b>
+                                                                </a>
+                                                            </li>
+                                                            <li class="with-sub-menu hover">
+                                                                <p class='close-menu'></p>
+                                                                <a href="@Url.Action("FactoryOutlet","Login")" class="clearfix">
+                                                                    <strong>
+                                                                        MyProfile
+                                                                    </strong>
+                                                                    <b class='caret'></b>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-8 col-xs-5 header_right">
+                        <div class="menu_right cart" style="display: inline-flex;">
+                            <div class="navbar-left no-pad m-t-0" style="border:0px;">
+                                <a onclick="documentTrack('#search');" href="#search" class="search-form-tigger btn btn-link no-pad" data-toggle="search-form"><i class="fa fa-search" aria-hidden="true" style="margin-top:6px;font-size: 23px; color:#fff;margin-right:8px;"></i></a>
+                            </div>
+                            <div class="hidden-xs navbar-left" style="border:0px;">
+                                <input type="text" name="search" class="search form-control hidden" placeholder="Search">
+                            </div>
+
+                            <div id="wishlistmenubutton" class="btn-group btn-block cartwishlist hidden-xs" style="display: inline-block;margin-top: 0; width: auto;">
+                                <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="form_wishwrapper btn btn-inverse btn-block btn-lg dropdown-toggle menuwishlistbtn"><i class="fa fa-heart-o" style="font-size:23px; margin-right:16px;padding-top:7px;"></i><span id="wishlist-total" class="hidden-xs">0</span></button>
+
+                                <ul class="dropdown-menu pull-right form_wishwrapper" id="dropdownwishlist">
+                                    <li>
+                                        <div id="defalutloader" style="display:none;text-align:center">Loading....</div>
+                                        <table class="table table-striped">
+                                            <tbody id="Wlatestlist"></tbody>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <div class="row" style="margin-bottom:16px">
+                                            <button type="button" class="btn btn-primary btn-md waves-effect text-center m-b-20 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2" id="btnviewmorewishlist" style="display:none;text-align:center;">View More <span id="wishlistmorecount"></span></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="cart" class="btn-group btn-block cartwishlist hidden-xs">
+                                <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle cartdatabind"><i class="fa fa-shopping-bag" style="font-size:23px;margin-right:16px;"></i> <span id="cart-total" class="hidden-xs">0</span></button>
+
+                                <ul class="dropdown-menu pull-right second" id="cartdropdownid">
+                                    <li>
+                                        <div class="sub-menu" style="width: 100%">
+                                            <div class="content">
+                                                <div class="row cartmenu">
+                                                    <div class="col-sm-6" onclick="virtualstock()">
+                                                        <div class="html ">
+                                                            <h4 class="ftitle cartborderback" id="virtualstock" style="cursor: pointer;">Virtual Stock<span id="layoutvirtualcount"></span></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6" onclick="physicalstock()">
+                                                        <div class="html ">
+                                                            <h4 class="ftitle" id="physicalstock" style="cursor: pointer;">Physical Stock<span id="layoutphysicalcount"></span></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div id="defalutcartloader" style="display:none;text-align:center">Loading....</div>
+                                                    <table class="table table-striped">
+                                                        <tbody id="tablephysical"></tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row" style="margin-bottom:12px">
+                                                    <button type="button" class="btn btn-primary btn-md waves-effect text-center m-b-20 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-0" id="btnviewmorecartlist" style="display:none;text-align:  center;">GO TO CART</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div id="currencyType" class="btn-group open hidden-xs">
+                                <a class="btn btn-link" title="All Amounts are shown in this Currency.">
+                                    <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPathAdmin"]/UploadFiles/Country/@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.FLAGIMG" />
+                                    <div>&nbsp; @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE</div>
+                                </a>
+                            </div>
+                            <div class="btn-group open hidden-xs">
+                                <a class="btn btn-link dropdown-toggle userprofile" data-toggle="dropdown" aria-expanded="true" id="userprofileclick" style="color: #fff;font-size: 16px;">
+                                    <i class="fa fa-user-o" style="margin-top: 5px;font-size: 23px; color:#fff;"></i>
+                                    &nbsp; Hello&nbsp; @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTPERSONNAME
+                                </a>
+
+                                <ul class="dropdown-menu" style="right:25%;left:unset;width: 158px;display:none;" id="orderdropdown">
+                                    <li id="">
+
+                                        <div class="row otherdetail"><a href="@Url.Action("MyProfile","Profile")">My Profile</a></div>
+                                        <div class="row otherdetail"><a href="@Url.Action("FeedBack","Home")">Feedback</a></div>
+                                        <div class="row otherdetail"><a href="@Url.Action("LogOut","Login")">Logout</a></div>
+                                        @*<div id="profileloader" style="display:none"></div>*@
+                                        @*@if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+                                            {
+                                                <a href="javascript:void(0)">@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.COMPANY</a>
+                                            }*@
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="outer1"></div>
+    <div>
+        <div class="search-form-wrapper example" data-transition="slide" data-animationtime="500">
+            <form class="search-form col-sm-6 col-sm-offset-3" id="formsearchbtn" action="">
+                <div class="input-group">
+                    <input type="text" name="search" id="txtsearch" class="search form-control" placeholder="Search">
+                    <span class="input-group-addon serch-bg" id="basic-addon2">
+                        <a href="javascript:void(0)" onclick="SearchDesigns()"><i class="fa fa-search white" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="input-group-addon close-bg" id="searchclosebtn">
+                        <i class="fa fa-close white" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="fixed_height">
+        @RenderBody()
+    </div>
+    @*<div class="container" style="margin-top:30px">
+            <div class="row">
+                <div class="col-lg-12" style="background-color:#eff5f5">
+                    <img src="~/Content/image/clientfooterimage/SJMALogo.png" style="margin-top:10px; height:100px;width:190px" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                    <img src="~/Content/image/clientfooterimage/sda-logo-500x500.jpg" style="margin-top:10px; height:100px;width:170px" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                    <img src="~/Content/image/clientfooterimage/gjepc1.png" style="margin-top:10px; height:100px;width:170px" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                    <img src="~/Content/image/clientfooterimage/igilogotrans.png" style="margin-top:10px; height:100px;width:170px" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+                    <img src="~/Content/image/clientfooterimage/Bureau_of_Indian_Standards_Logo.svg.png" style="margin-top:10px; height:100px;width:170px" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                </div>
+            </div>
+        </div>*@
+    <footer style="margin-top:0px;">
+        <div class="container-fluid footer_center" style="margin-bottom:30px; padding-top:30px;">
+            <div class="row">
+                <div class="container-fluid footermodule">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-5 col-sm-5 col-xs-12 atfooter4">
+
+                            <div class="promo-banner space5">
+                                <h4 class="footer-title footer_padding"><b>Our Branches</b></h4>
+                                <hr class="footer_border">
+                                <div class="row">
+                                    <div class="col-lg-4" style="padding-left:0px;">
+                                        <div class="contact_footer">
+                                            <div class="footer_icon">
+                                                <div><h5 style="color:#c75534">Surat</h5></div>
+                                                <div><i class="fa fa-paper-plane" aria-hidden="true"></i>405, Trinity Jewells, Princes Plaza, Sardar Chowk Mini Bazar, Varacha Road, 395006, Gujarat</div>
+                                                <div><i class="fa fa-envelope" aria-hidden="true"></i><a href="javascript:void(0)">info@trinityjewells.com</a></div>
+                                                <div><i class="fa fa-phone" aria-hidden="true"></i><a href="javascript:void(0)">0261-4000-800</a></div>
+                                                <div><i class="fa fa-mobile fa-2x" aria-hidden="true"></i><a href="javascript:void(0)">+91 88225 22722 </a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-left:0px;">
+                                        <div class="footer_icon">
+                                            <div><h5 style="color:#c75534">Chennai</h5></div>
+                                            <div><i class="fa fa-paper-plane" aria-hidden="true"></i>2nd floor, 32/18, May Complex, Ramaswamy Street, T. Nagar, 600017, Tamil Nadu</div>
+                                            <div><i class="fa fa-envelope" aria-hidden="true"></i><a href="javascript:void(0)">sales@trinityjewells.com</a></div>
+                                            <div><i class="fa fa-phone" aria-hidden="true"></i><a href="javascript:void(0)">044-4388-6222</a></div>
+                                            <div><i class="fa fa-mobile fa-2x" aria-hidden="true"></i><a href="javascript:void(0)">+91 88225 22922</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-left:0px;">
+                                        <div class="footer_icon">
+
+                                            <div><h5 style="color:#c75534">Los Angeles</h5></div>
+                                            <div><i class="fa fa-building" aria-hidden="true"></i>Aashi Diamonds</div>
+                                            <div><i class="fa fa-paper-plane" aria-hidden="true"></i>608 S Hill StreetSute#1111, Los Angeles Ca 90014, Los Angeles</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 atfooter1 mob-nopad" style="padding-left:15px!important;">
+                            <div class="promo-banner space5">
+                                <h4 class="footer-title footer_padding"><b>Useful Links</b></h4>
+                                <hr class="footer_border">
+                                <ul class="list-unstyled">
+                                    <li><a href="@Url.Action("WishList","Product")">Wishlist</a></li>
+                                    <li><a href="@Url.Action("CartList","Product")">Cart Details</a></li>
+                                    <li><a href="@Url.Action("MyProfile","Profile")">My Profile</a></li>
+                                    <li><a href="@Url.Action("FeedBack","Home")">Feedback</a></li>
+                                    <li><a href="@Url.Action("SiteMap","Home")">Site Map</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-xs-12 atfooter3 mob-nopad" style="padding-left:15px!important;">
+                            <div>
+                                <h4 class="footer-title footer_padding"><b>Download<br /> Our App</b></h4>
+                                <p>Easy to select latest<br /> designs and show <br /> modern designs.</p>
+                                <p></p>
+                                <span class="app-icon">
+                                    <span class="googleplay">
+                                        <a href="https://play.google.com/store/apps/details?id=com.Trinity.TrinityJewells" target="_blank">
+                                            <img src="~/Content/image/GooglePlay.png" class="img-responsive1" />
+                                        </a>
+                                    </span>
+                                </span>
+                                <span class="app-icon">
+                                    <span class="googleplay">
+                                        <a href="https://itunes.apple.com/in/app/trinityjewells/id1417418121?mt=8" target="_blank">
+                                            <img src="~/Content/image/Appstore.png" class="appstoreing img-responsive1 " />
+                                        </a>
+                                    </span>
+                                </span>
+                                <div class="app-mobile hidden-sm hidden-xs">
+                                    <span class="appmobileimg" data-p="play-store,f">
+                                        <img src="~/Content/image/footerappimg.png" class="img-responsive1" />
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+
+    </footer>
+    <div class="footer_bottom_outer" style="position: fixed;bottom: 0;width: 100%;background: #F7F7F7;z-index: 3;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fixfooter">
+                    <div class="col-lg-8 footertext">
+                        <p>
+                            Trinity Jewells &copy; 2018. made with  <i class="fa fa-heart"></i> by <a target="_blank" href="http://www.actosoft.in/">Actosoft</a>&nbsp;&nbsp;&nbsp;
+                        </p>
+                    </div>
+                    <div class="col-lg-4 footericon ">
+                        <a style="padding-right:10px" target="_blank" href="https://www.facebook.com/trinity-jewells-1386311611621562/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a class="footericonleft" target="_blank" href="https://www.instagram.com/trinityjewells/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a[href="javascript:void(0)"]').each(function () {
+                $(this).parents('.with-sub-menu').addClass('sub-active');
+            });
+        });
+    </script>
+    <script type='text/javascript'>
+        // When your page loads
+        $(function () {
+            // When the toggle areas in your navbar are clicked, toggle them
+            $("#search-button, #search-icon").click(function (e) {
+                e.preventDefault();
+                $("#search-button, #search-form").toggle();
+            });
+        })
+    </script>
+    @*...........Start Search toggle panel added by Nirupa............*@
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle=search-form]').click(function () {
+                $('.search-form-wrapper').toggleClass('open');
+                $('.search-form-wrapper .search').focus();
+                $('html').toggleClass('search-form-open');
+            });
+            $('#searchclosebtn').click(function () {
+                $('.search-form-wrapper').removeClass('open');
+                $('html').removeClass('search-form-open');
+            });
+            $('.search-form-wrapper .search').keypress(function (event) {
+                if ($(this).val() == "Search") $(this).val("");
+            });
+
+            //$('.search-form-wrapper').click(function(event) {
+            //  $('.search-form-wrapper').removeClass('open');
+            //  $('html').removeClass('search-form-open');
+            //});
+            //$("#txtsearch").click(function () {
+            //    $('.search-form-wrapper').toggleClass('open');
+            //    $('.search-form-wrapper .search').focus();
+            //    $('html').toggleClass('search-form-open');
+            //});
+        });
+    </script>
+    @*...........End Search toggle panel ............*@
+    @*...........Stickey Navbar............*@
+    <script>
+
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > 10) {
+                    $('.header_outer').addClass('stikey');
+                }
+                else {
+                    $('.header_outer').removeClass('stikey');
+                }
+            });
+        });
+    </script>
+    @*...........Stickey Navbar............*@
+
+    <script>
+        function getDisplayLanguage() {
+            var Language = '@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.LANGUAGE';
+            return Language;
+        }
+        function getCurrencyCode() {
+            var CurrencyCode = '@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE';
+            return CurrencyCode;
+        }
+        function getDomain() {
+            var domainPath = '@System.Configuration.ConfigurationManager.AppSettings["domainPath"]';
+            return domainPath;
+        }
+        function ClickOnCategory(category) {
+            window.location.assign(getDomain() + "/Product/ProductList?category=" + category + "&type=category");
+        }
+        function SubCategoryClick(subcategory) {
+            window.location.assign(getDomain() + "/Product/ProductList?category=" + subcategory + "&type=subcategory");
+        }
+        function ClickOnCollection(id) {
+            var collectionkeyword, collectionsubcategory, designrange;
+            collectionkeyword = $("#inputcollectionkeyword" + id).val();
+            collectionsubcategory = $("#inputcollectionsub" + id).val();
+            designrange = $("#inputcollectiondesign" + id).val();
+            window.location.assign(getDomain() + "/Product/ProductList?category=" + collectionsubcategory + "&type=collection&searchkeyword=" + collectionkeyword + "&designno=" + designrange);
+        }
+        function CartWishlistCount() {
+            $.ajax({
+                url: getDomain() + "/Common/BindMastersDetails?ServiceName=CART_ITEM_COUNT_GET",
+                async: true,
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+                    if ($(data).find('RESPONSECODE').text() == "0") {
+                        $("#cart-total").html($(data).find('ITEMCOUNT').text());
+                        $("#wishlist-total").html($(data).find('WISHLISTCOUNT').text());
+                        $("#wishlistmorecount").html("(" + $("#wishlist-total").html() + ")");
+                        if ($("#wishlistmorecount").html() == "(0)") {
+                            $("#dropdownwishlist").css("display", 'none');
+                        }
+                        if ($("#cart-total").html() == "0") {
+                            $("#cartdropdownid").css("display", 'none');
+                        }
+                    }
+                },
+                error: OnError,
+            });
+        }
+        function Topwishlistdata() {
+            $("#btnviewmorewishlist").hide();
+            $("#Wlatestlist").html("");
+            $("#defalutloader").show();
+            $.ajax({
+                url: getDomain() + "/Common/BindMastersDetails?ServiceName=WISHLIST_GET&rows=5",
+                async: true,
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+
+                    if ($(data).find('RESPONSECODE').text() == "0") {
+                        var JsonObject = xml2json.parser(data);
+                        if (JsonObject.serviceresponse.detailslist != undefined) {
+                            $("#btnviewmorewishlist").show();
+                            $("#Wlatestlist").append($("#Datawishlatestlist").render(JsonObject.serviceresponse.detailslist.details));
+                            $(".indianpricewish").each(function () {
+                                var id = $(this).attr('id');
+                                var Rowid = id.split("indianpricewish");
+                                var totalp = $("#iprwish" + Rowid[1]).val();
+                                var convertint = parseFloat(totalp).toLocaleString(getDisplayLanguage(), {
+                                    style: 'currency', currency: getCurrencyCode(),
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                });
+                                $("#" + id).html(convertint);
+                            });
+                            $("#defalutloader").hide();
+                        }
+                        //  $("#wishlistmorecount").html("(" + $("#wishlist-total").html() + ")");
+                    }
+                    else {
+                        $("#defalutloader").hide();
+                        InvalidResponseCode(data);
+                    }
+                },
+                error: OnError,
+            });
+        }
+        function Deletewishlist(id) {
+            var data = {
+                "DATAFROM": "WishList",
+                "ISPHYSICALSTOCK": $("#stock" + id).html(),
+                "DESIGNCODE": $("#designno" + id).html(),
+            }
+            $.ajax({
+                url: getDomain() + "/Common/OpeartionsOnMaster?ServiceName=SHOPPINGCART_CRUD",
+                data: data,
+                async: true,
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+                    if ($(data).find('RESPONSECODE').text() == "0") {
+                        $("#" + id).remove();
+                        CartWishlistCount();
+                        $("#dropdownwishlist").css("display", 'block');
+                        Topwishlistdata();
+                    }
+                    else {
+                        InvalidResponseCode(data);
+                    }
+                },
+                error: OnError,
+            });
+        }
+        function physicalstock() {
+            $("#virtualstock").removeClass("cartborderback");
+            $("#physicalstock").addClass("cartborderback");
+            var stock = "Physical"
+            Bindphysicalstockdata(stock);
+        }
+        function Bindphysicalstockdata(stock) {
+            $("#btnviewmorecartlist").hide();
+            $("#defalutcartloader").show();
+            $("#tablephysical").html("");
+            $("#layoutvirtualcount").html("");
+            $("#layoutphysicalcount").html("");
+            var myfilter;
+            myfilter = { rules: [] };
+            myfilter.rules.push({ field: "STOCKTYPE", op: "eq", data: stock });
+            $.ajax({
+                url: getDomain() + "/Common/BindMastersDetails?ServiceName=SHOPPINGCART_GET&rows=5&myfilters=" + JSON.stringify(myfilter),
+                data: "",
+                async: true,
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+                    if ($(data).find('RESPONSECODE').text() == "0") {
+                        var JsonObject = xml2json.parser(data);
+                        if (JsonObject.serviceresponse.detailslist != undefined) {
+                            $("#btnviewmorecartlist").show();
+                            $("#tablephysical").append($("#DataPhysical").render(JsonObject.serviceresponse.detailslist.details));
+                        }
+                        else {
+                            $("#tablephysical").html("Your Stock Is Empty!!!");
+                            $("#tablephysical").css("text-align", "center");
+                        }
+                        if (JsonObject.serviceresponse.totalvirtualcount != undefined) {
+                            $("#layoutvirtualcount").html(" (" + JsonObject.serviceresponse.totalvirtualcount.virtualcount + ")");
+                        }
+                        if (JsonObject.serviceresponse.totalphysicalcount != undefined) {
+                            $("#layoutphysicalcount").html(" (" + JsonObject.serviceresponse.totalphysicalcount.physicalcount + ")");
+                        }
+                        $(".indianpricecart").each(function () {
+                            var id = $(this).attr('id');
+                            var Rowid = id.split("indianpricecart");
+                            var totalp = $("#iprcart" + Rowid[1]).val();
+                            var convertint = parseFloat(totalp).toLocaleString(getDisplayLanguage(), {
+                                style: 'currency', currency: getCurrencyCode(),
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            });
+                            $("#" + id).html(convertint);
+                        });
+                        $("#defalutcartloader").hide();
+                    }
+                    else {
+                        if (JsonObject.serviceresponse.totalvirtualcount != undefined) {
+                            $("#layoutvirtualcount").html(" (" + JsonObject.serviceresponse.totalvirtualcount.virtualcount + ")");
+                        }
+                        if (JsonObject.serviceresponse.totalphysicalcount != undefined) {
+                            $("#layoutphysicalcount").html(" (" + JsonObject.serviceresponse.totalphysicalcount.physicalcount + ")");
+                        }
+                        $("#defalutcartloader").hide();
+                        InvalidResponseCode(data);
+                    }
+                },
+                error: OnError,
+            });
+        }
+        function virtualstock() {
+            $("#physicalstock").removeClass("cartborderback");
+            $("#virtualstock").addClass("cartborderback");
+            var stock = "Virtual"
+            Bindphysicalstockdata(stock);
+        }
+        function Deletecartaddwishlist(cartid) {
+            var movewish = "MovetoWish";
+            cartdltdata(cartid, movewish);
+        }
+        function Deletecartlist(cartid) {
+            var movewish = "";
+            cartdltdata(cartid, movewish);
+        }
+        function cartdltdata(cartid, movewish) {
+            var data = {
+                "oper": "delete",
+                "DATAFROM": "Cart",
+                "CARTID": cartid,
+                "WHERE_EQ_DELETETYPE": movewish,
+            }
+            saveoperation(data, cartid);
+        }
+        function saveoperation(data, cartid) {
+            $.ajax({
+                url: getDomain() + "/Common/OpeartionsOnMaster?ServiceName=SHOPPINGCART_CRUD",
+                data: data,
+                async: true,
+                cache: false,
+                type: 'POST',
+                success: function (data) {
+                    if ($(data).find('RESPONSECODE').text() == "0") {
+                        $("#" + cartid).remove();
+                        CartWishlistCount();
+                        var stock;
+                        if ($("#physicalstock").hasClass('cartborderback')) {
+                            stock = "Physical"
+                        }
+                        else {
+                            stock = "Virtual"
+                        }
+
+                        Bindphysicalstockdata(stock);
+                    }
+                    else {
+                        InvalidResponseCode(data);
+                    }
+                },
+                error: OnError,
+            });
+        }
+        function SearchDesigns() {
+            window.location.assign(getDomain() + "/Product/ProductList?category=" + $("#txtsearch").val() + "&type=search");
+        }
+        /*------------Right click , F12 Start-----------------*/
+
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) { // Prevent F12
+                return false;
+            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I
+                return false;
+            } else if (event.ctrlKey && (event.keyCode === 67 || event.keyCode === 86 || event.keyCode === 85 || event.keyCode === 117)) {
+                return false;
+            } else if (event.keyCode == 42) {
+                return false;
+            }
+        });
+
+        /*------------Right click , F12 End-----------------*/
+        $(document).click(function (e) {
+
+            if (!$(e.target).hasClass("menuwishlistbtn")
+                && $(e.target).parents("#dropdownwishlist").length === 0) {
+                $("#dropdownwishlist").hide();
+            }
+            if (!$(e.target).hasClass("cartdatabind")
+                && $(e.target).parents("#cartdropdownid").length === 0) {
+                $("#cartdropdownid").hide();
+            }
+            if (!$(e.target).hasClass("userprofile")
+              && $(e.target).parents("#orderdropdown").length === 0) {
+                $("#orderdropdown").hide();
+            }
+        });
+        $(document).ready(function () {
+            /*------------Right click , F12 Start-----------------*/
+            $('html').on("contextmenu", function (e) {
+                return false;
+            });
+
+
+            /*------------Right click , F12 End-----------------*/
+            CartWishlistCount();
+            $("#dropdownwishlist").hide();
+            $("#cartdropdownid").hide();
+            $("#orderdropdown").hide();
+            $(".menuwishlistbtn").click(function (e) {
+                $("#cartdropdownid").css("display", 'none');
+                $("#orderdropdown").css("display", 'none');
+                if ($("#wishlist-total").html() > 0) {
+                    if ($('#dropdownwishlist').css('display') == 'none') {
+                        $("#dropdownwishlist").css("display", 'block');
+                        Topwishlistdata();
+                    }
+                    else {
+                        $("#dropdownwishlist").css("display", 'none');
+                    }
+                }
+                else {
+                    $("#dropdownwishlist").hide();
+                }
+            });
+            $(".cartdatabind").click(function () {
+                if ($("#cart-total").html() > 0) {
+                    $("#dropdownwishlist").css("display", 'none');
+                    $("#orderdropdown").css("display", 'none');
+                    if ($('#cartdropdownid').css('display') == 'none') {
+                        $("#cartdropdownid").css("display", 'block');
+                        $("#physicalstock").removeClass("cartborderback");
+                        $("#virtualstock").addClass("cartborderback");
+                        var stock = "Virtual"
+                        Bindphysicalstockdata(stock);
+                    }
+                    else {
+                        $("#cartdropdownid").css("display", 'none');
+                    }
+
+                }
+                else {
+                    $("#dropdownwishlist").css("display", 'none');
+                    $('#cartdropdownid').css('display', 'none');
+                }
+
+            });
+            $("#btnviewmorewishlist").click(function () {
+                window.location.href = getDomain() + "/Product/WishList";
+            });
+            $("#btnviewmorecartlist").click(function () {
+                window.location.href = getDomain() + "/Product/CartList";
+            });
+            $("#userprofileclick").click(function () {
+                $("#dropdownwishlist").css("display", 'none');
+                $("#cartdropdownid").css("display", 'none');
+                if ($('#orderdropdown').css('display') == 'none') {
+                    $("#orderdropdown").css("display", 'block');
+                }
+                else {
+                    $("#orderdropdown").css("display", 'none');
+                }
+            });
+        });
+    </script>
+    <script id="Datawishlatestlist" type="text/x-jsrender">
+        <tr id="{{>wishlistid}}">
+            <td class="text-center">
+                <a href="#">
+                    <img src="{{>imagepath}}" alt="" title="" class="img-thumbnail">
+                </a>
+            </td>
+            <td class="text-left">
+                <p id="designno{{>wishlistid}}">{{>designcode}}</p>
+            </td>
+            <td class="text-left">
+                <span class="indianpricewish" id="indianpricewish{{>wishlistid}}"></span>
+                <input id="iprwish{{>wishlistid}}" type="hidden" value="{{>price}}" />
+            </td>
+            <td class="text-right" id="stock{{>wishlistid}}" style="display:none">{{>isphysicalstock}}</td>
+            <td class="text-center"><button type="button" onclick="Deletewishlist('{{>wishlistid}}')" title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+        </tr>
+    </script>
+    <script id="DataPhysical" type="text/x-jsrender">
+        <tr id="{{>cartid}}">
+            <td class="text-center">
+                <a href="#">
+                    <img src="{{>imagepath}}" alt="" title="" class="img-thumbnail">
+                </a>
+            </td>
+            <td class="text-left">
+                <p id="designno">{{>designcode}}</p>
+            </td>
+            <td class="text-left">{{>quantity}}</td>
+            <td class="text-left">
+                <span class="indianpricecart" id="indianpricecart{{>cartid}}"></span>
+                <input id="iprcart{{>cartid}}" type="hidden" value="{{>price}}" />
+            </td>
+            <td class="text-center"><button type="button" onclick="Deletecartaddwishlist('{{>cartid}}')" title="Add to wishlist" class="btn btn-xs" style="background: #fff;border: 1px solid #d9534f!important;"><i class="fa fa-heart" style="color:#d9534f!important;"></i></button></td>
+            <td class="text-center"><button type="button" onclick="Deletecartlist('{{>cartid}}')" title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+        </tr>
+    </script>
+    @*<script id="DataTotalorderlist" type="text/x-jsrender">
+            <div class="row">
+                <p class="maincompany">{{>user_name}}</p>
+            </div>
+            <div class="row mailspan">
+                <span><i class="fa fa-envelope" aria-hidden="true" style="color:black;"></i></span>
+                <span>{{>user_email}}</span>
+            </div>
+            <div class="row totaldiv">
+                <div class="col-sm-4">
+                    <span>{{>total_gold_amount}} gm</span><br/>
+                    <span>Gold</span>
+                </div>
+                <div class="col-sm-4">
+                    <span>{{>total_diamond_amount}} cts</span><br />
+                    <span>Diamonds</span>
+                </div>
+                <div class="col-sm-4">
+                    <span>{{>grand_amount}}</span><br />
+                    <span>Balance</span>
+                </div>
+                <div class="col-sm-4">
+                    <span>{{>quotation}}</span><br />
+                    <span>Quots</span>
+                </div>
+                <div class="col-sm-4">
+                    <span>{{>job}}</span><br />
+                    <span>Job</span>
+                </div>
+                <div class="col-sm-4">
+                    <span>{{>total_order}}</span><br />
+                    <span>Stock</span>
+                </div>
+            </div>
+            <div class="row otherdetail"><a href="@Url.Action("MyDetails","Profile")">My Details</a></div>
+            <div class="row otherdetail">My Policy</div>
+            <div class="row otherdetail">My Order</div>
+            <div class="row otherdetail"><a href="@Url.Action("LogOut","Login")">Logout</a></div>
+        </script>*@
+</body>
+</html>

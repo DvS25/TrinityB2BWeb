@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Site Map";
+}
+<div class="col-sm-12">
+    <div class="product_title">
+        <h3>SiteMap</h3>
+        <ul class="breadcrumb product_page" style="top:-16px">
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="javascript:void(0)">Site Map</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-12" id="bindsitemap">
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/Home/Sitemap.js"></script>
+    <script id="Databindsitemap" type="text/x-jsrender">
+        <ul>
+            {{for details }}
+            <li>
+                <a href="javascript:void(0)" onclick="ClickOnCategory('{{>categoryname}}')" class="sitecategory">{{>categoryname}}</a>
+                <ul>
+                    {{for subcategorylist.subcategory}}
+                    <li class="subcatesite"><a href="javascript:void(0)" onclick="SubCategoryClick('{{>subcategoryname}}')">{{>subcategoryname}}</a></li>
+                    {{/for}}
+                </ul>
+            </li>
+            {{/for}}
+        </ul>
+    </script>
+    <script id="Databindcollections" type="text/x-jsrender">
+        <ul>
+            {{for details }}
+            <li>
+                <input type="hidden"value="{{>subcategoryname}}" id="inputcoltsub{{>woman_collection_id}}" />
+                <input type="hidden" value="{{>collectionkeyword}}" id="inputcoltkeyword{{>woman_collection_id}}" />
+                <input type="hidden" value="{{>designcode}}" id="inputcoltdesign{{>woman_collection_id}}" />
+               
+                <a href="javascript:void(0)" class="nameofcollection" onclick="Collectionclick('{{>woman_collection_id}}')"><b>{{>categoryname}}</b></a>
+            </li>
+            {{/for}}
+        </ul>
+    </script>
+
+}
+
+

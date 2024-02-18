@@ -1,0 +1,95 @@
+﻿
+<div class="col-sm-12 mob-nopad" id="quo_history_div">
+    <div class="product_title titlepd titlepad1">
+        <h3 id=""><span id="backmyquotation" class="cursorcss"><img src="~/Content/image/leftbackarrow.png" class="backbuttom" /></span>Order History</h3>
+        <ul class="breadcrumb product_page hidden-xs hidden-sm quotationhome">
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("MyProfile","Profile")">My Profile</a></li>
+            <li><a href="javascript:void(0)">Order History</a></li>
+        </ul>
+    </div>
+    <div class="qborder">
+        <div class="row searchdiv search1">
+            <label for="searchquotationlist"><i class="fa fa-search" style="color: #847878;"></i></label>
+            <input class="col-sm-10" type="text" placeholder="Search here Ordr. no, Status, Ordr. Date and Ordr. Type" id="searchquotationlist" />
+        </div>
+        <div class="row">
+            <div class="iwidth-1200max" style="overflow-x: auto; overflow-y: hidden;">
+                <table class="table table-hover iwidth-1200">
+                    <thead class="qttitle thead-light">
+                        <tr>
+                            <th class="text-center">Sr. No</th>
+                            <th class="text-center">Ordr. No</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Ordr. Date</th>
+                            <th class="text-center">Ordr. Type</th>
+                            <th id="displyparty" style="display:none;" class="text-center">Party Name</th>
+                            <th class="text-center">Gross Wgt</th>
+                            <th class="text-center">Dia. Pcs</th>
+                            <th class="text-center">Dia. Wgt</th>
+                            <th class="text-center">Metal Wgt</th>
+                            <th class="text-center">Total Pcs</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">PDF</th>
+                            <th class="text-center">View</th>
+                        </tr>
+                    </thead>
+                    <tbody id="BindQuothistory"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-12 mob-nopad text-right bottomdiv" id="pagedivquot">
+            <label class="control-label"><span id="RecordsAdjust1">1 - 15</span> of <span id="TotalRecordAdjust1"></span></label>
+            <div class="btn-group" id="">
+                <div class="btn btn-sm backpre" data-toggle="tooltip" data-original-title="Previous" id="backwardAdjust1" style="padding: 3px 10px!important;margin-right: 3px;">
+                    <i style="font-size: 14px !important;" class="fa fa-angle-left"></i>
+                </div>
+                <div class="btn btn-sm backpre" data-original-title="Next" data-toggle="tooltip" id="forwardAdjust1">
+                    <i style="font-size: 14px !important;" class="fa fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="historytrackdetail" style="display:none">
+    <div class="addscaleclass">
+        <div class="product_title row pro-title pr1" style="border-bottom: 1px solid #d6d6d6;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h3 id=""><span id="backmyquotationdetail" class="cursorcss"><img src="~/Content/image/leftbackarrow.png" class="backbuttom" /></span>Order Details</h3>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="float:right;">
+                <ul class="breadcrumb product_page hidden-sm hidden-xs">
+                    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("MyProfile","Profile")">My Profile</a></li>
+                    <li><a href="javascript:void(0)" onclick="show_quot_history()">Order History</a></li>
+                    <li><a href="javascript:void(0)">Order Details</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12 mob-nopad" style="margin-top: 3% !important;">
+            <div class="row" id="txtquotlist"></div>
+        </div>
+        <div class="col-sm-12 mob-nopad">
+            <div class="timeline-scroll">
+                <ul class="timeline timeline-horizontal" id="Timelinedetail"></ul>
+            </div>
+        </div>
+        <div class="col-sm-12 mob-nopad">
+            <div class="qborder">
+                <div class="row qttitle hidden-sm hidden-xs">
+                    <div class="col-sm-1 qd_product">Product</div>
+                    <div class="col-sm-1">Design No</div>
+                    <div class="col-sm-6">Descriptions</div>
+                    <div class="col-sm-1">Size</div>
+                    <div class="col-sm-1">Qty</div>
+                    <div class="col-sm-1">Price</div>
+                </div>
+                <div class="row pddesc" id="quodesigndetail"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

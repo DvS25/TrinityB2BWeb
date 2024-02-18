@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Wish List";
+}
+<div class="container-fluid mob-conp">
+    <div class="addscaleclass">
+        <div class="product_title row pro-title pr1" style="border-bottom: 1px solid #d6d6d6;">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <h3 id="subcategoryname">Wishlist</h3>
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-12" style="float:right;">
+                <ul class="breadcrumb product_page head1 hidden-sm hidden-xs">
+                    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("WishList","Product")">Wishlist</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" style="">
+            <div class="row" id="wishlistdata" style="margin-top: 5% !important;display:none"></div>
+            <div class="row emptycart" id="emptywishlist" style="margin-top: 5% !important;display:none">
+                <h3 class="text-center ">Your Wishlist Is Currently Empty!</h3>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script id="Databindwishlist" type="text/x-jsrender">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mainwishdiv" id="{{>wishlistid}}" style="border-bottom: 1px solid #eee; padding-bottom:20px; margin-bottom:20px;">
+            <input id="stock{{>wishlistid}}" style="display:none" value="{{>isphysicalstock}}" />
+            <div class="col-sm-4 col-xs-4">
+                <a class="thumbnail wishimg" id="" href="#" onclick="showproductdetail('{{>designcode}}','{{>wishlistid}}')">
+                    <img src="{{>imagepath}}" title="" alt="Trinity Image" />
+                </a>
+            </div>
+            <div class="col-sm-8 col-xs-8 no-pad">
+                <div class="row">
+                    <a class="desinghover" href="#" onclick="showproductdetail('{{>designcode}}','{{>wishlistid}}')"><h3 style="width:auto" id="designno{{>wishlistid}}">{{>designcode}}</h3></a>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Size : </b></span>
+                    <span>{{if size != '[object Object]'}}{{>size}}{{else}}0{{/if}}</span>
+
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Metal : </b></span>
+                    <span>{{>gpurity}}</span>
+                    <span>{{>gcolor}}</span>
+                    <span>{{>metaltype}}</span>
+                    <span>{{>goldwgt}}&nbsp;&nbsp;gm</span>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Diamond : </b></span>
+                    <span>{{>dquality}}/{{>dcolor}}</span>
+                    <span>{{>diamondpcs}}&nbsp;&nbsp;pcs/</span>
+                    <span>{{>diamongweight}}&nbsp;&nbsp;cts</span>
+                </div>
+                {{if stoneweight > 0}}
+                <div class="row wishlist-pr">
+                    <span><b>CStone : </b></span>
+                    <span>{{>stonecode}}&nbsp;&nbsp;/</span>
+                    <span>{{if stonecolor != '[object Object]'}}{{>stonecolor}}{{else}}0{{/if}}</span>
+                    <span>{{>stonepcs}}&nbsp;&nbsp;pcs</span>
+                    <span>{{>stoneweight}}&nbsp;&nbsp;cts</span>
+                </div>
+                {{/if}}
+                <div class="row pricediv">
+                    <span class="indianprice wishprice" id="indianprice{{>wishlistid}}"></span>
+                    <input id="ipr{{>wishlistid}}" type="hidden" value="{{>price}}" />
+                </div>
+
+                <div class="row combobtn">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6" style="padding-right:0px;padding-left:0px;">
+                        <button type="button" class="btn btn-primary btn-sm waves-effect text-center backcartcolor" onclick="addtocartfromwishlist('{{>wishlistid}}')" style="padding: 5px 15px;">Add to cart</button>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" style="padding-left:0px;">
+                        <button type="button" class="btn btn-primary btn-sm waves-effect text-center dltbackground" onclick="daletetowishlist('{{>wishlistid}}')" style="padding: 5px 15px;">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <script src="~/Scripts/Product/WishList.js"></script>
+}

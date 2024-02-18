@@ -1,0 +1,20 @@
+.so-page-builder .container-fluid{padding:0; overflow:hidden;}.so-page-builder .container{padding:0; overflow:hidden;}.so-page-builder section{overflow:hidden;}
+.row_j10h{padding:40px 0 0 0;margin:20px 0 20px 0; overflow:hidden;}
+
+.row_errv{margin:3% 0 3% 0; overflow:hidden;}
+
+.row_vwwk{padding:20px 10px 20px 10px; overflow:hidden;}
+
+/* Style Image Carousel */ 
+.yt-carousel-style-1 .yt-carousel-image:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+backgroud: rgba(255, 255, 255, 0.15);
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+}

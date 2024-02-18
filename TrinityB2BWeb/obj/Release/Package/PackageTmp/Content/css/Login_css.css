@@ -1,0 +1,46 @@
+﻿body {
+
+}
+.container{
+    height: -webkit-fill-available;
+}
+.container-fluid {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.login_div{
+    display:flex;
+    padding-top:25px;
+    padding-bottom:25px;
+    background-color:rgba(255,255,255,0.5);
+    border-radius:5px;
+}
+.center_div{
+      margin-top:10px;
+}
+.text_center{
+    text-align:center;
+}
+.input_text{
+    width:100%;
+    background-color:rgba(0,0,0,0);
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.5);
+}
+.btn1{
+    width:80%;
+    text-align:center;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    color:white;
+    padding-top:5px;
+    padding-bottom:5px;
+    background-color:#000000;
+    border:0px;
+    border-radius:5px;
+}

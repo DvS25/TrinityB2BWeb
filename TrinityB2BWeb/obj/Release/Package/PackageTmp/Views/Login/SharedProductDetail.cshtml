@@ -1,0 +1,208 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Shared Product Detail";
+}
+
+
+<div class="container-fluid">
+    <div class="product_title pr2">
+        <h3 id="subcategoryname"></h3>
+        <ul class="breadcrumb product_page  hidden-sm hidden-xs">
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="javascript:void(0)">Shared Product Detail</a></li>
+        </ul>
+    </div>
+    <input type="hidden" value="@ViewBag.Designno" id="hidedesignno" />
+    <input type="hidden" value="@ViewBag.Stocktype" id="hideStocktype" />
+
+    <div id="content" class="container mob-nopad content1">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 product_left mob-nopad" id="productimagecontent">
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 product_center mob-nopad">
+                <div id="topdatabind"></div>
+                <div id="btnmoredetail">
+                    <div class="row">
+                        <div class="col-sm-6 mob-nopad" id="diamonddetails"></div>
+                        <div class="col-sm-6 mob-nopad" id="golddetails"></div>
+                    </div>
+                    <div class="row" id="colostonedetails"></div>
+                    <div class="row">
+                        <div class="col-sm-6 mob-nopad" id="makincharges"></div>
+                        <div class="col-sm-6 mob-nopad" id="pricebreakup"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <link href="~/Content/plugin/magnific/magnific-popup.css" rel="stylesheet" />
+    <script src="~/Content/plugin/moment/moment.min.js"></script>
+    <script src="~/Content/plugin/moment/moment-with-locales.min.js"></script>
+    <script src="~/Content/plugin/elevatezoom/jquery.elevatezoom.min.js"></script>
+    <script src="~/Content/plugin/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/Login/SharedProductDetail.js"></script>
+
+    <script id="Datagolddetails" type="text/x-jsrender">
+        <h3 class="hearderfont">Metal Details</h3>
+        <div class="col-sm-12" style="padding:0px !important">
+            <div class="container-fluid" style="width:auto;padding:0px !important; color:#6b6b6b;">
+                <div class="row">
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad pd_padding">
+                        <p><b class="mob-12">Type</b></p>
+                        <p><b class="mob-12">Metal Id</b></p>
+                        <p><b class="mob-12">Net Weight</b></p>
+                        <p><b class="mob-12">Gross Weight</b></p>
+                    </div>
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad pd_padding">
+                        <p class="mob-12" style="text-align:right" id="gmetaltype">{{>metaltype}}</p>
+                        <p class="mob-12" style="text-align:right;display:none" id="gpvalue">{{>goldpurity}}</p>
+                        <p class="mob-12" style="text-align:right;display:none" id="gcvalue">{{>goldcolor}}</p>
+                        <p class="mob-12" style="text-align:right" id="goldpucovalue">{{>goldpurity}}<span> {{>goldcolor}}</span></p>
+                        <p class="mob-12" style="text-align:right">{{>goldweight}}<span> gm</span></p>
+                        <p class="mob-12" style="text-align:right">{{>grossweight}} <span> gm</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <script id="Datadiamonddetails" type="text/x-jsrender">
+        <h3 class="hearderfont">Diamond Details</h3>
+        <div class="col-sm-12" style="padding:0px !important">
+            <div class="container-fluid" style="width:auto;padding:0px !important;color:#6b6b6b;">
+                <div class="row">
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad pd_padding">
+                        <p><b class="mob-12">Clarity</b></p>
+                        <p><b class="mob-12">Color</b></p>
+                        <p><b class="mob-12">Pieces</b></p>
+                        <p><b class="mob-12">Weight</b></p>
+                    </div>
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad pd_padding">
+                        <p class="mob-12" style="text-align:right" id="dpvalue">{{>diamondpurity}}</p>
+                        <p class="mob-12" style="text-align:right" id="dcvalue">{{>diamondcolour}}</p>
+                        <p class="mob-12" style="text-align:right">{{>diamondpices}}</p>
+                        <p class="mob-12" style="text-align:right">{{>diamondweight}}<span> cts</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="Datacolostonedetails" type="text/x-jsrender">
+        <h3 class="hearderfont">Color Stone Details</h3>
+        <div class="col-sm-12" style="padding:0px !important">
+            <div class="container-fluid" style="width:auto;padding:0px !important;color:#6b6b6b;">
+                <div class="row">
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad">
+                        <p><b class="mob-12">Shape</b></p>
+                        <p><b class="mob-12">Code</b></p>
+                        <p><b class="mob-12">Quality</b></p>
+                        <p><b class="mob-12">Color</b></p>
+                        <p><b class="mob-12">Weight</b></p>
+                        <p><b class="mob-12">Pieces</b></p>
+                    </div>
+                    <div class="col-centered col-sm-6 col-xs-6 pro_detail mob-nopad">
+                        <p class="mob-12" style="text-align:right">{{>stoneshape}}</p>
+                        <p class="mob-12" style="text-align:right">{{>stonecode}}</p>
+                        <p class="mob-12" style="text-align:right">{{>stonequality}}</p>
+                        <p class="mob-12" style="text-align:right">{{>stonecolor}}</p>
+                        <p class="mob-12" style="text-align:right">{{>stoneweight}}<span> cts</span></p>
+                        <p class="mob-12" style="text-align:right">{{>stonepcs}}<span> pcs</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="Datatoplength" type="text/x-jsrender">
+        <ul class="list-unstyled price_section">
+            <li>
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 maindesignno">
+                        <span class="designnumberorange">{{>designno}}</span>
+                        <span id="headergoldpurity" class="prise-color topleftkt"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="row">
+            {{if ratestar > 0}}
+            <div class="rateyo" id="rating{{>designno}}" style="float: left;z-index:0"></div>
+            <input id="star{{>designno}}" type="hidden" value="{{>ratestar}}" />
+            {{/if}}
+        </div>
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 side-brdr" style="padding:0px !important;">
+                    <div class="container-fluid" style="width:auto;padding:0px !important;color:#6b6b6b">
+                        <div class="row">
+                            <div class="col-centered col-sm-6 col-xs-6 mob-nopad pro_detail">
+                                <p><b class="mob-12">Length:</b></p>
+                                <p><b class="mob-12">Width:</b></p>
+                                <p><b class="mob-12">Height:</b></p>
+                                <p><b class="mob-12">Size:</b></p>
+                            </div>
+                            <div class="col-centered col-sm-6 col-xs-6 mob-nopad pro_detail">
+                                <p class="mob-12" style="text-align:right">{{>lenth}} mm</p>
+                                <p class="mob-12" style="text-align:right">{{>width}} mm</p>
+                                <p class="mob-12" style="text-align:right">{{>height}} mm</p>
+                                <p class="mob-12" style="text-align:right" id="dsizevalue">{{if psize >= 0}}{{>psize}}  {{/if}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="padding:0px !important">
+                    <div class="container-fluid" style="width:auto;padding:0px !important;color:#6b6b6b;">
+                        <div class="row">
+                            <div class="col-centered col-sm-6 col-xs-6 mob-nopad pro_detail">
+                                <p><b class="mob-12">Net Weight:</b></p>
+                                <p><b class="mob-12">D Weight:</b></p>
+                                <p id="colorstonelable" style="display:none"><b class="mob-12">CS Weight:</b></p>
+                            </div>
+                            <div class="col-centered col-sm-6 col-xs-6 mob-nopad pro_detail">
+                                <p class="mob-12" style="text-align:right" id="netweight"></p>
+                                <p class="mob-12" style="text-align:right">{{>diamondweight}} cts</p>
+                                <p class="mob-12" style="text-align:right" id="colostonewight"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="Dataproductdetail" type="text/x-jsrender">
+        <div class="thumbnails">
+            <div>
+                <a class="thumbnail detail-wdth" id="setcaroselimage" href="{{>imagepath}}" title="" onclick="thumbnailclick()">
+                    <img src="{{>imagepath}}" title="" alt="Trinity Image" id="atzoom" data-zoom-image="{{>imagepath}}" />
+                </a>
+            </div>
+            <div class="image_additional_outer">
+                <div id="additional-images" class="owl-carousel owl-theme">
+
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+    </script>
+
+    <script id="Datadesignimage" type="text/x-jsrender">
+        <div class="image-additional item">
+            <a class="thumbnail elevatezoom-gallery" href="{{>imagepath}}" title="" data-zoom-image="{{>imagepath}}" data-image="{{>imagepath}}" onclick="imageadditionalouter(this)"> <img src="{{>imagepath}}" title="" alt="Trinity Image" /></a>
+        </div>
+    </script>
+
+    <script>
+        $("#owl-item").css('width', '100px !important');
+    </script>
+}

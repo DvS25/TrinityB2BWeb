@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Us";
+}
+<div class="container-fluid">
+<div class="row">
+    <div class="product_title product-aboutus">
+        <div class="col-sm-12 mob-nopad">
+            <h3>About Us</h3>
+            <ul class="breadcrumb product_page head beforloginbread aboutuslogin hidden-sm hidden-xs">
+                <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+                <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                <li><a href="javascript:void(0)"></a>About Us</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-12 main_about_header mob-nopad">
+        <center>
+            <h3 class="wel_center pro-orange po1" style="color:#c75534;">WELCOME TO TRINITY JEWELLS</h3>
+            <img class="img-top" src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/border.png">
+        </center>
+        <p class="text-justify">
+            Trinity Jewells is a family business focused on providing high-quality service and customer satisfaction - we will do everything we can to meet your expectations.  Our Goldsmith, has over 10 years bench-work experience; he is available for consultations for projects ranging from repair, new design to re-styling project and more!  Our staff are friendly, knowledgeable and are at your service.
+        </p>
+        <p class="class="text-justify"">Gold Diamond jewellery at Trinity Jewells is hallmarked and diamonds certified. Always creative with design, process, product and service.</p>
+        <p class="text-justify">Shining bright with a young team focused on innovation, customer happiness and transparency, Trinityjewells.com addresses the growing demands of today's always on-the-go consumers to discover, explore, buy and know more about their jewellery. We believe in the mantra, “Transparency is the key to success” and we highly dedicate our services to the same. We love our customers and our policies provide easy returns, BIS Hallmark, 100% certified jewellery, life-time exchange, best and transparent prices and unique designs all under one roof.</p>
+        <p class="text-justify">We know you are social and so are we. You can simply find us on Facebook, Instagram and Twitter. Don’t miss out on our Blog and stay updated with latest jewel and fashion trends.</p>
+        <p class="text-justify">Now your favorite designs are just a click away. Think Jewellery, Think Trinity Jewells!</p>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  about_ing_div mob-nopad">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mob-nopad">
+            <img src="~/Content/image/catalog/Data/promo-4.png" id="" style="width:100%">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 slid_about_img fadeInRight">
+            <p class="trinity-quote">“We have beautiful jewellery in gold, diamond and more crafted by the best jewellery designers. You can find both modern and traditional jewellery here. Choose from a wide selection with options for each age group. Whatever decision you make; you are guaranteed to leave fully satisfied. ”
+            </p>
+            <p class="name">Trinity Jewells</p>
+        </div>
+    </div>
+</div>
+</div>

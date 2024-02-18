@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Outlet";
+}
+<div class="row">
+    <div class="product_title">
+        <div class="col-md-12">
+            <h3>Outlet</h3>
+            <ul class="breadcrumb product_page head beforloginbread">
+                <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+                <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                <li><a href="javascript:void(0)"></a>Outlet</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="factorymap" style="height:470px;"></div>
+    </div>
+    <div class="col-md-12" style="margin-top:15px; padding:0px;">
+        <div class="col-sm-6 col-md-4 col-lg-4 col-xs-12 borderadd">
+            <div>
+             
+                <p><b>Deep Kamal Shopping Center</b></p>
+                <p>Varachha Main Rd, Sarthana Jakat Naka, Nature Park and Zoo, Nana Varachha, Surat, Gujarat 395008.</p>
+                <p><i class="fa fa-phone"></i> 0261-4000-800</p>
+                <p><i class="fa fa-envelope"></i> info@trinityjewells.com</p>
+                  
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAzqCYIhzUTaTaTGA2lTADmA5LsksQuHnQ"></script>
+    <script src="~/Scripts/Login/FactoryOutlet.js"></script>
+}
+
+

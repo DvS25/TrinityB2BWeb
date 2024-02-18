@@ -1,0 +1,329 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Product List";
+}
+<div class="container-fluid">
+<div class="addscaleclass">
+    <div class="product_title row pro-title pr1" style="border-bottom: 1px solid #d6d6d6; margin-top:20x;">
+        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12 mob-nopad headmb">
+            <button type="button" id="btnmodalfilter" class="btn btn-primary btn-md btn-block waves-effect text-center" data-toggle="modal" data-target="#FilterProductlistModal">Filter</button>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+            <div class="category_limit" id="virtualphysicalradio">
+                <label class="con" style="width:auto;margin:3px;float:left;">
+                    <span>Virtual Stock</span>
+                    <input type="radio" checked="checked" name="vpradio" value="Virtual">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="con" style="width:auto;margin:3px;float:left;">
+                    <span>Physical Stock &nbsp;&nbsp;&nbsp;</span>
+                    <input type="radio" name="vpradio" value="Physical" id="radiophy">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+            <select id="dropdownfilter" class="form-control mob-mt8">
+                <option selected="selected">--- Sort By ---</option>
+                <option value="Default">Default</option>
+                <option value="designno">Design Number</option>
+                <option value="whatisnew"> What's New</option>
+                <option value="popular">Popular</option>
+                <option value="pricelowtohigh">Price  Low &gt; High</option>
+                <option value="ratehightolow">Rating High &lt; Low</option>
+            </select>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-12" style="float:right">
+            <ul class="breadcrumb product_page mob-mt19 mob-fl hidden-sm hidden-xs" style="top:-18px;">
+                <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li><a href="#">@ViewBag.Subcategoryname</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row" style="width:100%">
+            <div id="content" class="col-sm-12 mob-nopad">
+                <br />
+                <input type="hidden" value="@ViewBag.Subcategoryname" id="productsubname" />
+                <input type="hidden" value="@ViewBag.CategoryType" id="typeofcategory" />
+                <input type="hidden" value="@ViewBag.Collectionkeyword" id="hiddencollectionkeyword" />
+                <input type="hidden" value="@ViewBag.Collectiondesignno" id="hiddencollectiondesignno" />
+                <input type="hidden" id="design_row_no" />
+                <input type="hidden" id="muldesigncode" />
+                <div class="row new-class-add" id="productlistdata">
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-lg-offset-5 col-md-offset-5 col-sm-offset-4">
+                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="viewmordesign" style="display:none">View More</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <h5 style="float: right;" id="recordcount"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal left fade" id="FilterProductlistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" style="z-index:9999;">
+    <div class="modal-dialog side-pwdth" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close addscaleclass" data-dismiss="modal" aria-label="Close" id="closefiltermodal" style="font-size: 32px"><span aria-hidden="true">&times;</span></button>
+                <div>
+                    <h3 class="modal-title col-sm-5 col-xs-7" id="myModalLabel">Filter</h3>
+                    <div class="container" style="width:100%;margin-top:10px">
+                        <div class="col-sm-3 col-xs-6">
+                            <button type="button" class="mob-right btn btn-sm waves-effect text-center m-b-20 applycancle" id="btnapplyfilter">Apply</button>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <button type="button" class="btn btn-sm waves-effect text-center m-b-20 applycancle" id="btnresetfilter">Reset</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <input type="hidden" id="hidenshapename" />
+                    <div style="background-color:#fff;padding:10px 5px;">
+                        <form class="form-control" style="border-radius:2px;">
+                            <input type="text" placeholder="Design No" id="designnumber" style="width:100%;color:gray" />
+                        </form><br />
+                        <div style="width:100%;text-align:center;">
+                            <label class="filter_lable"> Diamond Weight (cts)</label>
+                        </div>
+                        <div class="container" style="width:100%;">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-2 col-xs-offset-0">
+                                    <input type="text" class="form-control text-center" value="0.01" id="txtMin" />
+                                </div>
+                                <div class="col-xs-2" style="text-align:center;padding-top: 5px;font-size: 14px;">
+                                    <span>to</span>
+                                </div>
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-0 col-xs-offset-0" style="text-align:right;">
+                                    <input type="text" class="form-control text-center" value="5.00" id="txtMax" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="span2 col-sm-12" value="" data-slider-min="0.01" data-slider-tooltip="hide" data-slider-max="5" data-slider-value="[0.01,5]" data-slider-step=".01" id="diamondslider">
+                            </div>
+                        </div>
+                        <hr style="background-color:gray;" />
+                        <div class="goldalldata" style="display:none;">
+                            <div style="width:100%;text-align:center;">
+                                <label class="filter_lable"> Gold Purity</label>
+                            </div>
+                            <div class="container" style="width:100%;" id="txtgoldpurity">
+
+                            </div>
+                            <hr style="background-color:gray;" />
+                        </div>
+
+                        <div class="goldalldata" style="display:none;">
+                            <div style="width:100%;text-align:center;">
+                                <label class="filter_lable"> Gold Color</label>
+                            </div>
+                            <div class="container" style="width:100%;" id="txtgoldcolor">
+
+                            </div>
+                            <hr style="background-color:gray;" />
+                        </div>
+
+                        <div style="width:100%;text-align:center;">
+                            <label class="filter_lable"> Gold Weight (gm)</label>
+                        </div>
+                        <div class="container" style="width:100%;">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-2 col-xs-offset-0">
+                                    <input type="text" class="form-control text-center" value="0.51" id="txtgoldweightMin" />
+                                </div>
+                                <div class="col-xs-2" style="text-align:center;text-align:center;padding-top: 5px;font-size: 14px;">
+                                    <span>to</span>
+                                </div>
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-0 col-xs-offset-0" style="text-align:right;">
+                                    <input type="text" class="form-control text-center" value="30.00" id="txtgoldweightMax" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="span2 col-sm-12" value="" data-slider-min="0.51" data-slider-tooltip="hide" data-slider-max="30.00" data-slider-value="[0.51,30.00]" data-slider-step=".01" id="goldweightslider">
+                            </div>
+                        </div>
+                        <hr style="background-color:gray;" />
+                        <div style="width:100%;text-align:center;">
+                            <label class="filter_lable"> Price (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CURRENCYCODE)</label>
+                        </div>
+                        <div class="container" style="width:100%;">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-2 col-xs-offset-0">
+                                    <input type="text" class="form-control text-center" value="0" id="txtminprice" />
+                                </div>
+                                <div class="col-xs-2" style="text-align:center;padding-top: 5px;font-size: 14px;">
+                                    <span>to</span>
+                                </div>
+                                <div class="col-sm-3 col-xs-5 col-sm-offset-0 col-xs-offset-0" style="text-align:right;">
+                                    <input type="text" class="form-control text-center" value="100000" id="txtmaxprice" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="span2 col-sm-12" value="" data-slider-min="0" data-slider-tooltip="hide" data-slider-max="100000" data-slider-value="[0,100000]" data-slider-step="2000" id="priceslider">
+                            </div>
+                        </div>
+                        <hr style="background-color:gray;" />
+                        <div id="hidendiamonddetails" style="display:none">
+                            <div style="width:100%;text-align:center;">
+                                <label class="filter_lable">Diamond Shape</label>
+                            </div>
+                            <div class="Diamshape">
+                                <div class="row diamond_shape" id="diamondallshape">
+                                </div>
+
+                            </div>
+                            <hr style="background-color:gray;" />
+                            <div class="multiselect container" style="width:100%;">
+                                <div class="row dsizeclass" style="cursor: no-drop;">
+                                    <select id="txtdiamondsize" class="ui fluid dropdown Hide-border" multiple="" readonly="true" style="background-color: #fff!important;cursor:no-drop"></select>
+                                    @*<select class="js-example-basic-multiple dsize" name="states[]" multiple="multiple" id="txtdiamondsize"></select>*@
+                                </div>
+
+                            </div>
+                            <div class="multiselect container" style="width:100%;margin-top:16px;">
+                                <div class="row dcharniclass" style="cursor: no-drop;">
+                                    <select id="txtdiamondcharni" class="ui fluid dropdown Hide-border" multiple="" readonly="true" style="background-color: #fff!important;"></select>
+                                </div>
+                                @*<div class="selectBox" onclick="showCheckboxescharni()">
+                                        <select class="form-control">
+                                            <option>Select charni</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                    </div>
+                                    <div id="txtdiamondcharni" style="height:250px;overflow-y:auto">
+
+                                    </div>*@
+
+
+                            </div>
+                        </div>
+                    </div>
+                    @*<div>
+                        <div class="container" style="width:100%;margin-top:10px">
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btnapplyfilter">Apply</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btnresetfilter">Reset</button>
+                            </div>
+
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+</div>
+<link href="~/Content/css/Product_list.css" rel="stylesheet" />
+<link href="~/Content/plugin/slider/css/slider.css" rel="stylesheet" />
+<link href="~/Content/plugin/Semantic-UI-Master/css/semantic.min.css" rel="stylesheet" />
+
+@section Scripts{
+    <script src="~/Content/plugin/slider/js/bootstrap-slider.js"></script>
+    <script src="~/Content/plugin/Semantic-UI-Master/js/transition.min.js"></script>
+    <script src="~/Content/plugin/Semantic-UI-Master/js/dropdown.min.js"></script>
+    <script src="~/Scripts/Product/ProductList.js?v=1"></script>
+    <script id="DataDiamondsize" type="text/x-jsrender">
+        <option value="{{>size}}">{{>size}}</option>
+    </script>
+    <script id="Datadiamondcharni" type="text/x-jsrender">
+        <option value="{{>charni}}">{{>charni}}</option>
+    </script>
+    <script id="Datadiamondallshape" type="text/x-jsrender">
+        <div class="dvshape" id="{{>shape}}" onclick="Shapeclick(this.id)">
+            <img src="{{>imagepath}}" id="img{{>shape}}" /><br />
+            <span id="shapename{{>shape}}">{{>shape}}</span>
+        </div>
+    </script>
+    <script id="Datagoldpurity" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>purity}}" name="goldpuritycheck" id="{{>purity}}" onclick="onegoldpurity(this.id)" class="goldp" />
+            <label for="{{>purity}}">{{>purity}}</label>
+        </div>
+    </script>
+    <script id="Datagoldcolor" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>gcolor}}" name="goldpuritycolor" id="{{>gcolor}}" class="goldc" onclick="onegoldcheck(this.id)" />
+            <label for="{{>gcolor}}">{{>gcolor}}</label>
+        </div>
+    </script>
+    <script id="Dataproductlist" type="text/x-jsrender">
+        <div class="product-layout product-grid product-category product-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mob-nopad orderrow">
+            <div class="product-thumb">
+                <input type="hidden" value="{{>stocktype}}" id="txtstock{{>designno}}" />
+                <div class="image product-image" id="maindiv('{{>designno}}')"  style="background-color:none!important">    
+                    <div class="row">
+                        <div class="col-sm-4 buttonwishcart">
+                            <button type="button" class="wishlist_button wishcar-pad" data-toggle="tooltip" title="Add to Wish List" onclick="addtowishlist('{{>designno}}')">
+                                <i style="font-size:22px" id="heart{{>designno}}" class="{{if iswish==1}}fa fa-heart{{else}}fa fa-heart-o{{/if}}"></i>
+                            </button>
+                            <button type="button" class="compare_button" data-toggle="tooltip" title="Add to cart list" onclick="addtocartlist('{{>designno}}')">
+                                <i id="cart{{>designno}}" class="fa fa-shopping-bag {{if iscart==1}}cartcolor{{/if}}"></i>
+                            </button>
+                        </div>
+                        <div class="col-sm-4">
+                            {{if newdesign==1}}
+                            <div class="ribbon">
+                                <i><span><s></s><s></s></span></i>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <a href="#" id="{{>designno}}" onmouseover="Bindmultipledesign('{{>designno}}')" onmouseout="Removemultipledesign('{{>designno}}')">
+                        <img src="{{>imagepath}}" id="mainimg{{>designno}}"  onclick="productlisturl('{{>designno}}')" alt="Trinity Image" title="" class="img-responsive list-img"/>
+                        <div id="slideritem{{>designno}}" class="owl-carousel" style="display:none; margin:0px;"></div>
+                    </a>
+                   
+                </div>
+                <div>
+                    <div class="caption">
+                        <div class="row">
+                            <lable class="col-sm-4 col-xs-4 text-left">{{>g_weight}}<span> gm</span></lable>
+                            <lable class="col-sm-4 col-xs-4 design-code">{{>designno}}</lable>
+                            <lable class="col-sm-4 col-xs-4 text-end">{{>diamondweight}}<span> cts</span></lable>
+                        </div>
+                        <div class="row price-clr">
+                            <lable class="col-sm-4 col-xs-4 text-left">{{if gpurity != '[object Object]'}}{{>gpurity}}{{/if}}</lable>
+                            <div class="col-sm-4 col-xs-4" style="padding: 0px;">
+                                {{if ratestar > 0}}
+
+                                <div class="rateyo" id="rating{{>designno}}"></div>
+                                <input id="star{{>designno}}" type="hidden" value="{{>ratestar}}" />
+
+                                {{/if}}
+                            </div>
+                            {{if notpriceindiamond == 0}}
+                            <lable class="col-sm-4 col-xs-4 text-right">
+                                <span class="indianprice" id="indianprice{{>designno}}"></span>
+                                <input id="ipr{{>designno}}" type="hidden" value="{{>price}}" />
+                            </lable>
+                            {{/if}}
+                            {{if notpriceindiamond > 0}}
+                            <lable class="col-sm-4 col-xs-4 text-right" style="padding-right:0px;padding-left:0px">
+                                <span class="" id="" style="font-size:14px;cursor:pointer" onclick="productlisturl('{{>designno}}')">More Details</span>
+                            </lable>
+                            {{/if}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="binddimage" type="text/x-jsrender">
+        <div class="item" onclick="productlisturl('{{>designcode}}')" style="margin:0px !important">
+            <img id="" src="{{>imagepath}}" alt="Trinity image" class="img-responsive list-img" @*style="height:293px!important;opacity:1!important;"*@ />
+        </div>
+    </script>
+    }
+

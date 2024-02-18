@@ -1,0 +1,218 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Home";
+}
+<style>
+    .clientlogo img {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .clientlogobox {
+        width: 20%;
+        float: left;
+    }
+
+    #div_OurServices {
+        margin-bottom: 20px;
+        overflow-x: auto;
+        display: inline-flex;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+        #div_OurServices .OurServiceBox {
+            display: inline-block;
+            min-width: 125px;
+            text-align: center;
+            width: 100%;
+            background-color: white;
+            padding: 5px 0;
+            border-radius: 10px;
+            margin: 0 5px;
+            box-shadow: 1px 1px 4px 2px #999;
+        }
+
+            #div_OurServices .OurServiceBox .fullhtmlblock {
+                margin-bottom: 0px;
+            }
+</style>
+<div id="" class="content_home">
+    <div class="so-page-builder">
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row-style" style="margin-right:-15px !important;margin-left:-15px !important;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hski  col-style">
+                    <div id="slideshow0" class="owl-carousel" style="opacity: 1;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row_j10h row-style fullblock-row" id="div_OurServices">
+                @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_plwr col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon" ><img src="~/Content/image/catalog/Data/patent.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">IGI Certified</h4>
+                                    <h5 class="html1-sub">100% Certified Diamonds</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_06q3  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/hand.png" alt="freeshipping" style="height:28px;width:28px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">100%</h4>
+                                    <h5 class="html1-sub">Skin Friendly</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_bw7j  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/customer-support.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">Customization</h4>
+                                    <h5 class="html1-sub">Options</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_ix1i  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/icon_4.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">Support 24/7</h4>
+                                    <h5 class="html1-sub">whenever you need help</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>*@
+
+            </div>
+        </div>
+        <div class="container page-builder-ltr">
+            <div class="row row_1et5  row-style ">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_gxxf  col-style">
+                    <div class="tab-title">
+                        <h3>Our Categories</h3>
+                        <img src="~/Content/image/catalog/Data/Border.png" class="img-top" />
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_zpzm  col-style trending-section">
+                    <div class="container">
+                        <div id="latest_products_carousel">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container page-builder-ltr" style="margin-top: 15px!important;">
+            <div class="row row_fzhn  row-style responsive-imgblc ">
+                <div id="slideshow1" class="owl-carousel" style="opacity: 1;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid page-builder-ltr" style="padding-left:0px;padding-right:0px;">
+    <div class="row row_fzhn  row-style responsive-imgblc">
+        <div class="owl-carousel" id="clientlogoslider" style="opacity: 1;margin-bottom:0px;margin-top:20px;background-color:#eff5f5;">
+            @*<div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/igilogotrans.png" />
+                </div>
+                <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/GSI logo.png" />
+                </div>
+                <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/Bureau_of_Indian_Standards_Logo.png" />
+                </div>
+                <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/SJMALogo.png" />
+                </div>
+                <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/GJEPC-Logo.png" />
+                </div>
+                <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                    <img src="~/Content/image/clientfooterimage/sda-logo-500x500.png" />
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/Home/Index.js"></script>
+    <script id="datawomensslider" type="text/x-jsrender">
+        <div class="item">
+            <input type="hidden" id="txt_collectionkeyword{{>woman_collection_id}}" value="{{>collectionkeyword}}" />
+            <input type="hidden" id="txt_subcategoryname{{>woman_collection_id}}" value="{{>subcategoryname}}" />
+            <input type="hidden" id="txt_designorange{{>woman_collection_id}}" value="{{>designcode}}" />
+            <a href="javascript:void(0)" onclick="Womancollection('{{>woman_collection_id}}')"><img src="{{>picturepath}}" alt="Womans Collection" class="img-responsive" /></a>
+        </div>
+    </script>
+    <script id="datacategoryslider" type="text/x-jsrender">
+        <div class="item col-lg-3 col-md-3 col-sm-3 col-xs-6 mob-mb15">
+            <div class="product-layout">
+                <div class="product-thumb transition">
+                    <div class="image product-image">
+                        <a href="javascript:void(0)" onclick="ClickOnSubcategory('{{>subcategoryname}}')" id="{{>subcategoryname}}">
+                            <div class="p-over p-grid-over"> </div>
+                            <div class="p-over p-grid-over1"> </div>
+                            <img src="{{>subcategoryimage}}" alt="{{>subcategoryname}}" title="Category" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="caption">
+                        <h5><a href="#0" style="color:#484848;">{{>subcategoryname}}</a></h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <script id="dataslideshow1" type="text/x-jsrender">
+        <div class="item" style="text-align:center">
+            <span class="lineeffect">
+                <a href="#0">
+                    <img src="{{>picturepath}}" id=""><br>
+                </a>
+            </span>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="render_OurServices">
+        <div class="OurServiceBox">
+            <div class="fullhtmlblock">
+                <a href="javascript:void(0)">
+                    <span class="html1-icon"><img src="{{>imgpath}}" alt="freeshipping" style="height:32px;width:32px"></span>
+                </a>
+                <div class="html1-content">
+                    <a href="javascript:void(0)">
+                        <h4 class="html1-main">{{>discription}}</h4>
+                        @*<h5 class="html1-sub">100% Certified Diamonds</h5>*@
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="render_clientlogo">
+        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+            <img src="{{>imgpath}}" />
+        </div>
+    </script>
+}

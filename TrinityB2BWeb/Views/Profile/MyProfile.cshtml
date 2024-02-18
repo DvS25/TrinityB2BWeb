@@ -1,0 +1,469 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "My Profile";
+}
+
+<div class="container-fluid" style="position:fixed;width:100%;background-color:#fff; z-index:10;">
+    <div class="row mainprofile" id="mainprofile">
+        <div class="product_title">
+            <h3 class="headpad" id="mydetailname">My Profile</h3>
+            <ul class="breadcrumb product_page head1 hidden-sm hidden-xs">
+                <li><a href="/TrinityWeb/Home"><i class="fa fa-home"></i></a></li>
+                <li><a href="/TrinityWeb/Home">Home</a></li>
+                <li><a href="javascript:void(0)">My Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+{
+    <input value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE" type="hidden" id="hiddenusertypeid" />
+}
+<div class="container-fluid mob-nopad valid" id="myprofile_datadiv" style="display:none; position:relative;">
+    <div class="row mainprofile" id="mainprofile">
+        <div class="col-sm-12 mob-nopad">
+
+            <div id="Totalorderlist"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wall">
+                <div class="profiledetails">
+                    <div class="row" onclick="Showmydetails()">
+
+                        <div class="col-sm-6" style="padding-left:0px">
+                            <p>My Details</p>
+                            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "Party")
+                            {
+                            <p class="pro-nm text-left fs-18"><i class="fa fa-user pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTPERSONNAME</p>
+                            }
+                            <p class="pro-nm text-left "><i class="fa fa-envelope pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.EMAIL</p>
+
+                            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "Party")
+                            {
+                            <p>
+                                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO != "")
+                                    {
+                                    <span><i class="fa fa-phone pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO&nbsp;&nbsp;&nbsp;</span>
+                                    }
+                                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE != "")
+                                    {
+                                    <span><i class="fa fa-mobile pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE</span>
+                                    }
+                            </p>
+                            }
+                            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "SalesExecutive")
+                            {
+                            <p>
+                                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO != "")
+                                    {
+                                    <span><i class="fa fa-phone pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO&nbsp;&nbsp;&nbsp;</span>
+                                    }
+                                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE != "")
+                                    {
+                                    <span><i class="fa fa-mobile pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE</span>
+                                    }
+                            </p>
+                            }
+
+                        </div>
+                        <div class="col-sm-5" style="padding:0px">
+                            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+                            {
+                            <span id="lable-usergrp" style="display:none">Assign User Group:&nbsp;&nbsp;</span><span id="sales-user-group" style="display:none;font-weight:400"></span><br />
+                            <span style="color: #5E6570;font-weight:400"><b>Default Diamond Color : </b>@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.DEFAULTDIAMONDCOLOR</span><br />
+                            <span style="color: #5E6570;font-weight:400"><b>Default Diamond Purity : </b>@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.DEFAULTDIAMONDPURITY</span><br />
+                            <span style="color: #5E6570;font-weight:400"><b>Design Concept: </b></span><span id="sales-designconcept" style="font-weight:400"></span><br />
+                            }
+                        </div>
+                        <div class="col-sm-1" style="float:right">
+                            <span><i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px;"></i></span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="row" onclick="Showmypolicy()">
+                                <p>My Policy</p>
+                                <p>Row Material, Labour, Others</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row" onclick="Showquotationhistory()">
+                                <p>Order</p>
+                                <p>Order Tracking, Status, Details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="detailpartial" style="display:none;">
+        @*position:absolute; top:80px;*@
+        @Html.Partial("~/Views/Profile/MyProfile/_MyDetails.cshtml")
+    </div>
+    <div id="policypartial" style="display: none">
+        @Html.Partial("~/Views/Profile/MyProfile/_MyPolicy.cshtml")
+    </div>
+    <div id="quotationhistorypartial" style="display: none">
+        @Html.Partial("~/Views/Profile/MyProfile/_QuotationHistory.cshtml")
+    </div>
+</div>
+
+@if (TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+{
+    <input type="hidden" id="hdn_policy" value="@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.POLICY" />
+}
+
+@section Scripts{
+
+    <script src="~/Scripts/Profile/MyProfile.js"></script>
+    <script src="~/Scripts/Profile/MyProfile/MyDetails.js"></script>
+    <script src="~/Scripts/Profile/MyProfile/MyPolicy.js"></script>
+    <script src="~/Scripts/Profile/MyProfile/QuotationHistory.js"></script>
+
+    @*------------------------My Profile-------------------------------------*@
+
+    <script id="DataTotalorderlist" type="text/x-jsrender">
+        <div class="row text-center">
+            @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null)
+            {
+                <div class="col-sm-12 down-brdr">
+                    <h3 class="profileuser m-t-0">@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.COMPANY</h3>
+                    <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/Border.png" class="img-top">
+                </div>
+            }
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mob-nopad">
+            <div class="col-sm-6" style="display:none">
+                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "Party")
+                {
+                    <p class="pro-nm text-left fs-18"><i class="fa fa-user pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTPERSONNAME</p>
+                }
+                <p class="pro-nm text-left "><i class="fa fa-envelope pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.EMAIL</p>
+            </div>
+            <div class="col-sm-6" style="display:none">
+                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "Party")
+                {
+                    <div class="row m-l-15 pro-nm text-left p-b-6 prof-phone">
+
+                        @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO != "")
+                        {
+                            <span><i class="fa fa-phone pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO&nbsp;&nbsp;&nbsp;</span>
+                        }
+                        @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE != "")
+                        {
+                            <span><i class="fa fa-mobile pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE</span>
+                        }
+
+                    </div>
+                }
+                @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession != null && @TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.USERTYPE == "SalesExecutive")
+                {
+                    <div class="row m-l-15 pro-nm text-left p-b-6">
+
+                        @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO != "")
+                        {
+                            <span><i class="fa fa-phone pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.CONTACTNO&nbsp;&nbsp;&nbsp;</span>
+                        }
+                        @if (@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE != "")
+                        {
+                            <span><i class="fa fa-mobile pro-orange" aria-hidden="true"></i>&nbsp;&nbsp;@TrinityB2BWeb.CommonClasses.SessionFacade.UserSession.MOBILE</span>
+                        }
+
+                    </div>
+                }
+            </div>
+            <div class="row col-sm-12 totaldiv no-pad">
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/ingot (2).png" width="30" class="m-b-6 f-l p-t-12" />
+                            <p class="text-center col-light fw400">Gold Balance</p>
+                            <p class="m-b-0 fs-18">{{>total_gold_amount}}<span class="gm-style"> gm</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/diamond (2).png" width="30" class="m-b-6 f-l p-t-12" />
+                            <p class="text-center col-light fw400">Diamonds Balance</p>
+                            <p class="m-b-0 fs-18">{{>total_diamond_amount}}<span class="gm-style"> cts</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder prise-pad">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/rupee (2).png" width="30" class="m-b-6 f-l p-t-12" />
+                            <p class="text-center col-light fw400">Amount Balance</p>
+                            <p id="total_grand_amount" class="m-b-0 fs-18">{{>grand_amount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/file.png" width="30" class="m-b-6 f-l p-t-12" />
+                            <p class="text-center col-light fw400">Total Order</p>
+                            <p class="m-b-0 fs-18">{{>quotation}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/tongs.png" width="50" class="m-b-6 f-l" />
+                            <p class="text-center col-light fw400">Job Work Order</p>
+                            <p class="m-b-0 fs-18">{{>job}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 box-btm">
+                    <div class="wall3">
+                        <div class="totalorder">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/value.png" width="30" class="m-b-6 f-l p-t-12" />
+                            <p class="text-center col-light fw400">Stock Order</p>
+                            <p class="m-b-0 fs-18">{{>total_order}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </script>
+    @*------------------------My Details-------------------------------------*@
+
+    <script id="Databinddiamondcolor" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>color}}" name="diamondcheck" id="{{>color}}" onclick="onediamondcolorcheck(this.id)" class="diamondc" />
+            <label for="{{>color}}">{{>color}}</label>
+        </div>
+    </script>
+    <script id="Databinddiamondpurity" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>quality}}" name="diamondcheck" id="{{>quality}}" onclick="onediamondpuritycheck(this.id)" class="diamondp" />
+            <label for="{{>quality}}">{{>quality}}</label>
+        </div>
+    </script>
+    <script id="SalesDatabinddiamondcolor" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>color}}" name="salesdiamondcheck" id="{{>color}}" onclick="salesonediamondcolorcheck(this.id)" class="salesdiamondc" />
+            <label for="{{>color}}">{{>color}}</label>
+        </div>
+    </script>
+    <script id="SalesDatabinddiamondpurity" type="text/x-jsrender">
+        <div class="checkboxdata checkbox-primary checkbox-inline productcheck">
+            <input type="checkbox" value="{{>quality}}" name="salesdiamondcheck" id="{{>quality}}" onclick="salesonediamondpuritycheck(this.id)" class="salesdiamondp" />
+            <label for="{{>quality}}">{{>quality}}</label>
+        </div>
+    </script>
+    <script id="DdlCountryList" type="text/x-jsrender">
+        <option value="{{>countryid}}">{{>countryname}}</option>
+    </script>
+    <script id="DdlStateList" type="text/x-jsrender">
+        <option value="{{>stateid}}">{{>statename}}</option>
+    </script>
+    <script id="DdlcityList" type="text/x-jsrender">
+        <option value="{{>cityid}}">{{>cityname}}</option>
+    </script>
+    <script id="DdlConceptOfList" type="text/x-jsrender">
+        <option value="{{>conceptofname}}">{{>conceptofname}}</option>
+    </script>
+
+    @*------------------------My Policy-------------------------------------*@
+    <script id="Datadiamondtablist" type="text/x-jsrender">
+        <tr>
+            <td class="text-center" scope="row" width="8%">{{>rownum}}</td>
+            <td>{{>shape}}</td>
+            <td>{{>d_size}}</td>
+            <td>{{>colour}}</td>
+            <td>{{>vvs}}</td>
+            <td>{{>vs}}</td>
+            <td>{{>si}}</td>
+        </tr>
+    </script>
+    <script id="Datacolortablist" type="text/x-jsrender">
+        <tr>
+            <td class="text-center" scope="row">{{>rownum}}</td>
+            <td>{{>shape}}</td>
+            <td>{{>d_size}}</td>
+            <td>{{>colour}}</td>
+            <td>{{>sygnety}}</td>
+            <td>{{>synthetic}}</td>
+        </tr>
+    </script>
+    <script id="Datalabourtablist" type="text/x-jsrender">
+        <tr>
+            <td class="text-center" scope="row">{{>rownum}}</td>
+            <td>{{>goldgram}}</td>
+            <td>{{>regular}}</td>
+            <td>{{>micropave}}</td>
+            <td>{{>italian}}</td>
+        </tr>
+    </script>
+    <script id="Bindjobworkdata" type="text/x-jsrender">
+        <h4 class="otherpolicyheader">{{>policy_name}}</h4>
+        {{if policy_detail}}
+        <ol class="addnumber">
+            {{for policy_detail.detailsjob}}
+
+            <li id="policydetails" class="profile-fs">{{>policy_detailnode}}</li>
+
+            @*<p id="policydetails" style="font-size:15px!important">{{>policy_detailnode}}</p>*@
+            {{/for}}
+        </ol>
+        {{/if}}
+    </script>
+
+    @*------------------------Quotation History-------------------------------------*@
+
+    <script id="DataQuothistory" type="text/x-jsrender">
+        <tr class="orderquotrow text-center">
+            <td>{{>rownum}}</td>
+            <td class="quot_no_color text-center">
+                <a onclick="Clickonquotation('{{>quotation_no}}')" href="javascript:void(0);">
+                    {{>quotation_no}}
+                </a>
+            </td>
+            <td class="text-center">{{>quatationstatus}}</td>
+            <td class="text-center">{{>quotationdate}}</td>
+            <td class="text-center">{{>quotationtype}}</td>
+            <td class="displaypartydata" style="display:none">{{>party}}</td>
+            <td class="text-center">{{>gross_wtg}} gm</td>
+            <td class="text-center">{{>total_dpcs}}</td>
+            <td class="text-center">{{>total_dwtg}} cts</td>
+            <td class="text-center">{{>total_mwgt}} gm</td>
+            <td class="text-center">{{>totalpcs}}</td>
+            <td class="text-center">
+                <span class="indianprice" id="indianprice{{>quotation_no}}"></span>
+                <input id="ipr{{>quotation_no}}" type="hidden" value="{{>total_amt}}" />
+            </td>
+            <td class="text-center">
+                {{if pdfname}}
+                <a href="{{>pdfname}}" target="_blank">
+                    <i class="fa fa-file-pdf-o" style="color:#c75534;font-size: 16px;"></i>
+                </a>
+                {{/if}}
+            </td>
+            <td class="text-center">
+                <a onclick="Clickonquotation('{{>quotation_no}}')" href="javascript:void(0);">
+                    <i class="fa fa-arrow-right" style="color:#c75534;font-size: 16px;"></i>
+                </a>
+            </td>
+        </tr>
+    </script>
+    <script id="DdlTimeline" type="text/x-jsrender">
+        <li class="timeline-item">
+            <div class="timeline-badge primary {{if desingpcs > 0}}trackgreen{{else}}trackgray{{/if}}">
+                <p>{{:desingpcs}}</p>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <p>{{>orderstatus}}</p>
+                </div>
+            </div>
+        </li>
+    </script>
+    <script id="Ddlquotlist" type="text/x-jsrender">
+        <div class="row quotdiv">
+            <div class="col-sm-6 mainquotno">
+                <span class="">{{>quotation_no}}&nbsp;</span>
+                <span>( {{>quatationstatus}} )</span>
+            </div>
+            <div class="col-sm-6">
+                <div style="float:right " class="quottype">
+                    <span>Order Type :</span>
+                    <span>{{>quotationtype}}</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12 quot_status quot-tp">
+            <div class="col-sm-4">
+                <div class="row">
+                    <lable class="col-sm-5">Total Pcs : </lable>
+                    <lable class="col-sm-7">{{>totalqty}}</lable>
+                </div>
+                <div class="row">
+                    <lable class="col-sm-5">Total Gold : </lable>
+                    <lable class="col-sm-7">{{>total_metalwgt}} gm</lable>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <lable class="col-sm-5">Total Diamond PCs : </lable>
+                    <lable class="col-sm-7">{{>total_dpcs}}</lable>
+                </div>
+                <div class="row">
+                    <lable class="col-sm-5">Total Diamond CTS : </lable>
+                    <lable class="col-sm-7">{{>total_dwtg}}</lable>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <lable class="col-sm-5">Total Amount : </lable>
+                    <lable class="col-sm-7" id="quototalamt"></lable>
+                </div>
+                <div class="row">
+                    <lable class="col-sm-5">Order Notes : </lable>
+                    <lable class="col-sm-7">{{if remark == null}}---{{else}}{{>remark}}{{/if}}</lable>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="Ddlquodesigndetail" type="text/x-jsrender">
+        <div class="row cartlistborder qutlistborder" id="">
+            <input type="hidden" value="{{>designcode}}" id="design{{>quotdetailid}}" />
+            <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+                <a class="thumbnail cursorcss quotimage" href="javascript:void(0)" onclick="showproductdetail('{{>quotdetailid}}')">
+                    <img src="{{>imagepath}}" title="" alt="Trinity Image" />
+                </a>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-10 col-xs-8">
+                <a class="cursorcss" href="javascript:void(0)" onclick="showproductdetail('{{>quotdetailid}}')"><h4 class="quot_design_code">{{>designcode}}</h4></a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-10 col-xs-8">
+                <div class="row wishlist-pr">
+                    <span><b>Metal : </b></span>
+                    <span>{{>metalkt}}</span>
+                    <span>{{>metalcolor}}</span>
+                    <span>{{>metalwgt}}&nbsp;&nbsp;gm</span>
+                </div>
+                <div class="row wishlist-pr">
+                    <span><b>Diamond : </b></span>
+                    <span>{{>diamond_purity}}/{{>diamondcolor}}</span>
+                    <span>{{>diamond_pcs}}&nbsp;&nbsp;pcs/</span>
+                    <span>{{>diamondwtg}}&nbsp;cts</span>
+                </div>
+                {{if stoneweight > 0}}
+                <div class="row wishlist-pr">
+                    <span><b>CStone : </b></span>
+                    <span>{{>stonequality}}&nbsp;&nbsp;/</span>
+                    <span>{{if stonecolor != '[object Object]'}}{{>stonecolor}}{{else}}0{{/if}}</span>
+                    <span>{{>stonepcs}}&nbsp;&nbsp;pcs</span>
+                    <span>{{>stoneweight}}&nbsp;&nbsp;cts</span>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-10 col-xs-8">
+                <label class="hidden-lg hidden-md hidden-sm">Size</label> <span>{{if jsize != '[object Object]'}}{{>jsize}}{{else}}0{{/if}}</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-10 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-2 col-xs-offset-4">
+                <label class="hidden-lg hidden-md hidden-sm">Qty</label> <span>{{>total_qty}}</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-10 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-2 col-xs-offset-4">
+                <span class="indianprice" id="indianprice{{>quotdetailid}}">{{>total_amt}}</span>
+                <input id="ipr{{>quotdetailid}}" type="hidden" value="{{>total_amt}}" />
+            </div>
+        </div>
+    </script>
+}
+
+

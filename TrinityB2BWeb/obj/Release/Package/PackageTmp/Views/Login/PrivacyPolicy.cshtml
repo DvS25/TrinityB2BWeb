@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Privacy Policy";
+}
+<div class="product_title">
+    <h3>Privacy Policy</h3>
+    <ul class="breadcrumb product_page">
+        <li><a href="@Url.Action("Index","Login")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("Index","Login")">Home</a></li>
+        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+    </ul>
+</div>
+<div class="row" style="margin-top: 50px;">
+        <div class="col-sm-12" id="text_bindbusinessdetails"></div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/Login/PrivacyPolicy.js"></script>
+    <script id="Bindjobworkdata" type="text/x-jsrender">
+        <h4 class="otherpolicyheader">{{>policy_name}}</h4>
+        {{if policy_detail}}
+        <ol class="addnumber">
+            {{for policy_detail.detailsjob}}
+
+            <li style="font-size:15px!important">{{>policy_detailnode}}</li>
+
+            @*<p id="policydetails" style="font-size:15px!important">{{>policy_detailnode}}</p>*@
+            {{/for}}
+        </ol>
+        {{/if}}
+    </script>
+}

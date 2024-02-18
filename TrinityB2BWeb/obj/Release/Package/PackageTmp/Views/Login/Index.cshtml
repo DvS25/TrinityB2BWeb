@@ -1,0 +1,507 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+}
+<style>
+    .clientlogo img {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .clientlogobox {
+        width: 20%;
+        float: left;
+        /*padding: 10px 70px;*/
+        margin-bottom: 0px;
+    }
+
+     #div_OurServices {
+        margin-bottom: 20px;
+        overflow-x: auto;
+        display: inline-flex;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+        #div_OurServices .OurServiceBox {
+            display: inline-block;
+            min-width: 125px;
+            text-align: center;
+            width: 100%;
+            background-color: white;
+            padding: 5px 0;
+            border-radius: 10px;
+            margin: 0 5px;
+            box-shadow: 1px 1px 4px 2px #999;
+        }
+
+            #div_OurServices .OurServiceBox .fullhtmlblock {
+                margin-bottom: 0px;
+            }
+</style>
+<div id="content" class="content_home">
+    <input type="hidden" value="@ViewBag.MessageHome" id="logouttotser" />
+    @if (@TrinityB2BWeb.CommonClasses.SessionFacade.LogoutInSession != null)
+    {
+        <input type="hidden" value="@TrinityB2BWeb.CommonClasses.SessionFacade.LogoutInSession.Is_Login" id="hiddenlogsession" />
+    }
+    <div class="so-page-builder">
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row-style" style="margin-right:-15px !important;margin-left:-15px !important;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hski  col-style">
+                    <div id="slideshow0" class="owl-carousel" style="opacity: 1;">
+                        <div class="item">
+                            <img src="~/Content/image/homepage/1.jpg" alt="Banner 1" class="img-responsive" />
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/image/homepage/2.jpg" alt="Banner 2" class="img-responsive" />
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/image/homepage/3.jpg" alt="Banner 3" class="img-responsive" />
+                        </div>
+
+                    </div>
+                    <div id="slideshow0" class="owl-carousel" style="opacity: 1;">
+                        <div class="item">
+                            <img src="~/Content/image/homepage/4.jpg" alt="Banner 4" class="img-responsive" />
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/image/homepage/5.jpg" alt="Banner 5" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row_j10h  row-style fullblock-row " id="div_OurServices">
+                @*<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_plwr  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/patent.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">IGI Certified</h4>
+                                    <h5 class="html1-sub">100% Certified Diamonds</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_06q3  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/hand.png" alt="freeshipping" style="height:28px;width:28px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">100%</h4>
+                                    <h5 class="html1-sub">Skin Friendly</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_bw7j  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/customer-support.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">Customization</h4>
+                                    <h5 class="html1-sub">Options</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col_ix1i  col-style">
+                        <div class="fullhtmlblock">
+                            <a href="javascript:void(0)">
+                                <span class="html1-icon"><img src="~/Content/image/catalog/Data/icon_4.png" alt="freeshipping" style="height:32px;width:32px"></span>
+                            </a><div class="html1-content">
+                                <a href="javascript:void(0)">
+                                    <h4 class="html1-main">Support 24/7</h4>
+                                    <h5 class="html1-sub">whenever you need help</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>*@
+
+            </div>
+        </div>
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row_errv  row-style htmlfullimgblock ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col_8hcb  col-style sale-block mobile-margin">
+                    <span class="lineeffect">
+                        <a href="#">
+                            <img src="~/Content/image/catalog/Data/promo-1.png"><br>
+                        </a>
+                    </span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col_ysih  col-style sale-block">
+                    <span class="lineeffect"><a href="#"><img src="~/Content/image/catalog/Data/promo-2.png"><br></a></span>
+
+                </div>
+                @*<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col_r3il  col-style sale-block">
+                        <span class="lineeffect"><a href="#"><img src="~/Content/image/catalog/Data/promo-3.png"><br></a></span>
+                    </div>*@
+            </div>
+        </div>
+        <div class="container page-builder-ltr">
+            <div class="row row_1et5  row-style ">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_gxxf  col-style">
+                    <div class="tab-title">
+                        <h3>Featured product</h3>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_zpzm  col-style trending-section mob-nopad">
+                    <div class="container">
+                        <div class="section_title">
+                            <h1 class="fp_carousel-title">Our Products</h1>
+                        </div>
+                        <div id="tabs-0" class="htabs atproduct_tab">
+
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab-featured-0" data-toggle="tab" class="selected"><h5>Featured</h5></a></li>
+                                <li><a href="#tab-latest-0" data-toggle="tab"><h5>Latest</h5></a></li>
+                                <li><a href="#tab-special-0" data-toggle="tab"><h5>Special</h5></a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div id="tab-latest-0" class="tab-pane">
+                                <div class="latest_products_carousel_tab product-item owl-carousel owl-theme" id="latest_products_carousel">
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Latest/PENDENTSET.JPG" alt="PENDENTSET" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">PENDENTSET</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Latest/FANCYRING.jpg" alt="FANCYRING" />
+                                                    </a>
+
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">FANCY RING</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Latest/MENSRING.JPG" alt="MENSRING" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">MANS RING</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Latest/LEDYBRACELAE.JPG" alt="LEDY BRACELATE" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">LEDY BRACELATE</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-featured-0" class="tab-pane active">
+                                <div class="featured_products_carousel_tab product-item owl-carousel owl-theme" id="featured_products_carousel">
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Featured/PENDENTSET.png" alt="PENDENTSET" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">PENDENTSET</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Featured/8a8e44f9-15ce-4cdd-87ec-138f111a6052.JPG" alt="FANCY RING" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">FANCY RING</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Featured/d5e3dd58-2ec9-40ad-a595-7477936a81e6.JPG" alt="MANS RING" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">MANS RING</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Featured/4d81cc5a-7dfa-46db-ac72-da9fa256f88e.png" alt="LEDY BRACELATE" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">LEDY BRACELATE</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Featured/2de4372a-21a5-44f5-852e-c20cfcd5f0aa.png" alt="GENTS BRACELATE" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">GENTS BRACELATE</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-special-0" class="tab-pane">
+                                <div class="special_products_carousel_tab product-item owl-carousel owl-theme" id="special_products_carousel">
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Special/2de4372a-21a5-44f5-852e-c20cfcd5f0aa.png" alt="GENTS BRACELATE" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">GENTS BRACELATE</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Special/5ae63225-61f7-41bf-a0c7-ec0fc6fc14cb.jpg" alt="FANCY EARING" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">FANCY EARING</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Special/MANGALSUTRA.JPG" alt="MANGALSUTRA" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">MANGALSUTRA</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="product-layout">
+                                            <div class="product-thumb transition">
+                                                <div class="image product-image">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="p-over p-grid-over"> </div>
+                                                        <div class="p-over p-grid-over1"> </div>
+                                                        <img src="~/Content/image/Special/bc6a1733-a893-45b6-91d5-fc5b2c2bd37b.jpg" alt="GENTS KADA" />
+                                                    </a>
+                                                </div>
+                                                <div class="caption">
+                                                    <h5><a href="javascript:void(0)">GENTS KADA</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row_fzhn  row-style responsive-imgblc " style="margin-top:20px">
+                <div id="slideshow1" class="owl-carousel" style="opacity: 1;">
+                    <div class="item" style="text-align:center">
+                        <span class="lineeffect"><a href="#"><img src="~/Content/image/catalog/Data/promo-4.png" id="slider1_img"><br></a></span>
+                    </div>
+                    <div class="item" style="text-align:center">
+                        <span class="lineeffect"><a href="#"><img src="~/Content/image/catalog/Data/promo-5.png" id="slider1_img"><br></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="newsletter_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12 newsletter_left">
+                            <div class="newsletter_title f-24">Newsletter</div>
+                            <div class="newsletter_text">Sign Up to our newsletter and save 20% off for your next purchase</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 newsletter_right">
+                            <div id="advanced-atnewsletter-box">
+                                <h2 class="heading-title"><span>Subscribe to us</span></h2>
+                                <div class="input-group box-atnewsletter-subscribe newsletter" id="mail-box">
+                                    <form id="formnews" class="form-inline">
+                                        <div class="form-group">
+                                            <input type="email" name="txtemail" id="txtnewsemail" value="" placeholder="Enter Your Email" class="form-control input-lg required" style="font-size: 16px;">
+                                            <button type="button" class="btn btn-default btn-lg" onclick="SubmitNewsLetter()">
+                                                Subscribe
+                                            </button>
+
+                                        </div>
+                                        <div>
+                                                <label>This field is required.</label>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="container page-builder-ltr" style="margin-top: 15px!important;">
+            <div class="row row_fzhn  row-style responsive-imgblc ">
+                <div id="feedbackslider" class="owl-carousel" style="opacity: 1;"></div>
+            </div>
+        </div>
+        <div class="container-fluid page-builder-ltr">
+            <div class="row row_fzhn  row-style responsive-imgblc ">
+                <div class="owl-carousel" id="clientlogoslider" style="opacity: 1;margin-bottom:0px;margin-top:20px;background-color:#eff5f5;">
+                    @*<div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/igilogotrans.png" />
+                        </div>
+                         <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/GSI logo.png" />
+                        </div>
+                        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/Bureau_of_Indian_Standards_Logo.png" />
+                        </div>
+                        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/SJMALogo.png" />
+                        </div>
+                        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/GJEPC-Logo.png" />
+                        </div>
+                        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+                            <img src="~/Content/image/clientfooterimage/sda-logo-500x500.png" />
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/Login/Index.js"></script>
+    <script id="datafeedbackslider" type="text/x-jsrender">
+        <div class="item row" style="text-align:center">
+            <h3>{{>partyname}}</h3>
+            <img src="@System.Configuration.ConfigurationManager.AppSettings["domainPath"]/Content/image/catalog/Data/Border.png" />
+            <p>{{>comment}}</p>
+            <div class="row">
+                <center>
+                    <div class="rateyo" id="rating{{>feedbackid}}"></div>
+                    <input id="star{{>feedbackid}}" type="hidden" value="{{>rating}}" />
+                </center>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="render_OurServices">
+        <div class="OurServiceBox">
+            <div class="fullhtmlblock">
+                <a href="javascript:void(0)">
+                    <span class="html1-icon"><img src="{{>imgpath}}" alt="freeshipping" style="height:32px;width:32px"></span>
+                </a>
+                <div class="html1-content">
+                    <a href="javascript:void(0)">
+                        <h4 class="html1-main">{{>discription}}</h4>
+                        @*<h5 class="html1-sub">100% Certified Diamonds</h5>*@
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-jsrender" id="render_clientlogo">
+        <div class="item row clientlogo" style="text-align:center;background-color:#F7F7F7;">
+            <img src="{{>imgpath}}" />
+        </div>
+    </script>
+}
